@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>算法学习--最大子数组和（分治法） | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="算法,">
+  
+
+  <meta name="description" content="最大子数组 算法描述： 1 找到数组中间位置mid，分成两个数组[low,mid],[mid,high]   2 最大子数组即为，[low,mid],[mid,high]和跨越mid的数组，3种情况之中的最大者。   3 [low,mid],[mid,high]可以使用递归算法求解   4 跨越中间点的情况，从中间点分别向左右遍历，寻找最大的包含中间点的最大子数组。将两者相加   5 比较[low">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法学习--最大子数组和（分治法）">
+<meta property="og:url" content="http://yoursite.com/2019/05/31/算法学习-最大子数组和（分治法）/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="最大子数组 算法描述： 1 找到数组中间位置mid，分成两个数组[low,mid],[mid,high]   2 最大子数组即为，[low,mid],[mid,high]和跨越mid的数组，3种情况之中的最大者。   3 [low,mid],[mid,high]可以使用递归算法求解   4 跨越中间点的情况，从中间点分别向左右遍历，寻找最大的包含中间点的最大子数组。将两者相加   5 比较[low">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-31T07:55:32.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法学习--最大子数组和（分治法）">
+<meta name="twitter:description" content="最大子数组 算法描述： 1 找到数组中间位置mid，分成两个数组[low,mid],[mid,high]   2 最大子数组即为，[low,mid],[mid,high]和跨越mid的数组，3种情况之中的最大者。   3 [low,mid],[mid,high]可以使用递归算法求解   4 跨越中间点的情况，从中间点分别向左右遍历，寻找最大的包含中间点的最大子数组。将两者相加   5 比较[low">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#最大子数组"><span class="toc-text">最大子数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法描述："><span class="toc-text">算法描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间复杂度："><span class="toc-text">时间复杂度：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-实现"><span class="toc-text">java 实现</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-算法学习-最大子数组和（分治法）" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">算法学习--最大子数组和（分治法）</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.05.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h1><hr>
+<h2 id="算法描述："><a href="#算法描述：" class="headerlink" title="算法描述："></a>算法描述：</h2><blockquote>
+<p>1 找到数组中间位置mid，分成两个数组[low,mid],[mid,high]<br>   2 最大子数组即为，[low,mid],[mid,high]和跨越mid的数组，3种情况之中的最大者。<br>   3 [low,mid],[mid,high]可以使用递归算法求解<br>   4 跨越中间点的情况，从中间点分别向左右遍历，寻找最大的包含中间点的最大子数组。将两者相加<br>   5 比较[low,mid],[mid,high]和跨越mid的数组重的最大者即为所求</p>
+</blockquote>
+<hr>
+<h2 id="时间复杂度："><a href="#时间复杂度：" class="headerlink" title="时间复杂度："></a>时间复杂度：</h2><blockquote>
+<p>最大子段和即为这三个区间的最大子段和的最大值。因此原问题可化为两个求解规模为 n/2 的子问题，和求解一个跨越中点的序列的最大子段和问题。其中第三种情况可分别求解序列 a1,…,amida1,…,amid 和 amid+1,…,anamid+1,…,an 的最大子序列，然后将两者合并即可，因此该部分的时间复杂度为 Θ(n)。算法的时间复杂度可用递归的形式表示为：<br>T(n)={Θ(1),n=12T(n/2)+Θ(n),n&gt;1<br>T(n)={Θ(1),n=12T(n/2)+Θ(n),n&gt;1<br>可得，算法的复杂度为T(n)=Θ(nlgn)T(n)=Θ(nlgn)。</p>
+</blockquote>
+<hr>
+<h1 id="java-实现"><a href="#java-实现" class="headerlink" title="java 实现"></a>java 实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import static java.lang.Float.POSITIVE_INFINITY;</span><br><span class="line">/*</span><br><span class="line">@Time    :2019/5/18 0018 下午 7:11</span><br><span class="line">@Author  :喜欢二福的沧月君（necydcy@gmail.com）</span><br><span class="line">@FileName: MaxCrossing.java</span><br><span class="line">@Software: IntelliJ IDEA</span><br><span class="line">*/</span><br><span class="line">public class MaxCrossing &#123;</span><br><span class="line">    /*</span><br><span class="line">    * 最大子数组:</span><br><span class="line">    * 分治法求解</span><br><span class="line">    * 1 找到数组中间位置mid，分成两个数组[low,mid],[mid,high]</span><br><span class="line">    * 2 最大子数组即为，[low,mid],[mid,high]和跨越mid的数组，3种情况之中的最大者。</span><br><span class="line">    * 3 [low,mid],[mid,high]可以使用递归算法求解</span><br><span class="line">    * 4 跨越中间点的情况，从中间点分别向左右遍历，寻找最大的包含中间点的最大子数组。将两者相加</span><br><span class="line">    * 5 比较[low,mid],[mid,high]和跨越mid的数组重的最大者即为所求</span><br><span class="line">    * */</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        //测试函数</span><br><span class="line">        int[] array = &#123; 9,10,8,12,6,10,12,11,9,1 &#125;;</span><br><span class="line">        int[] arr = new int[array.length-1];</span><br><span class="line">        for (int i = 0; i &lt;array.length-1 ; i++) &#123;</span><br><span class="line">            arr[i] = array[i+1]-array[i];</span><br><span class="line">        &#125;</span><br><span class="line">        int[] result =FindMaxImumSubarray(arr, 0, arr.length - 1);</span><br><span class="line">        for (int value : result) &#123;</span><br><span class="line">            System.out.println(value);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;最大子字符串和：&quot;+(array[result[0]]+array[result[1]]));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static int[] FindMaxImumSubarray(int[] A, int low, int high) &#123;</span><br><span class="line"></span><br><span class="line">        if (high == low)&#123;</span><br><span class="line">            return new int[]&#123;low,high,A[low]&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            int mid = (low+high)/2;</span><br><span class="line">            int[] lefts = new int[3];</span><br><span class="line">            int[] mids = new int[3];</span><br><span class="line">            int[] rights = new int[3];</span><br><span class="line">            lefts = FindMaxImumSubarray(A,low,mid);</span><br><span class="line">            rights = FindMaxImumSubarray(A,mid+1,high);</span><br><span class="line">            mids = FindMaxCrossingSubarray(A,low,mid,high);</span><br><span class="line">            assert rights != null;</span><br><span class="line">            assert lefts != null;</span><br><span class="line">            if (lefts[2]&gt;rights[2]&amp;&amp;lefts[2]&gt;mids[2])&#123;</span><br><span class="line">                return lefts;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (rights[2]&gt;lefts[2]&amp;&amp;rights[2]&gt;mids[2])&#123;</span><br><span class="line">                return rights;</span><br><span class="line">            &#125;</span><br><span class="line">            else return mids;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static int[] FindMaxCrossingSubarray(int[] A, int low, int mid, int high) &#123;</span><br><span class="line">        int leftSum = (int) -POSITIVE_INFINITY;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        int maxLeft = 0;</span><br><span class="line">        for (int i = mid; i &gt;=low ; i--) &#123;</span><br><span class="line">            sum += A[i];</span><br><span class="line">            if (sum&gt;leftSum)&#123;</span><br><span class="line">                leftSum = sum;</span><br><span class="line">                maxLeft = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int rightSum = (int) -POSITIVE_INFINITY;</span><br><span class="line">        sum = 0;</span><br><span class="line">        int maxRight = 0;</span><br><span class="line">        for (int j = mid+1; j &lt;=high ; j++) &#123;</span><br><span class="line">            sum += A[j];</span><br><span class="line">            if (sum&gt;rightSum)&#123;</span><br><span class="line">                rightSum = sum;</span><br><span class="line">                maxRight = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return new int[]&#123;maxLeft,maxRight,leftSum+rightSum&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/05/31/算法学习-归并排序（分治法）/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/05/31/leetcode17/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
