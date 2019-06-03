@@ -15,18 +15,18 @@
     <meta name="keywords" content="hexo,服务器,">
   
 
-  <meta name="description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。   vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-ge">
+  <meta name="description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。  vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-get">
 <meta name="keywords" content="hexo,服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="把hexo博客部署到自己的云服务器">
 <meta property="og:url" content="http://yoursite.com/2019/06/03/把hexo博客部署到自己的云服务器/index.html">
 <meta property="og:site_name" content="喜欢二福的沧月君的小站">
-<meta property="og:description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。   vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-ge">
+<meta property="og:description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。  vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-get">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-03T13:56:54.490Z">
+<meta property="og:updated_time" content="2019-06-03T14:05:07.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把hexo博客部署到自己的云服务器">
-<meta name="twitter:description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。   vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-ge">
+<meta name="twitter:description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。  vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-get">
 
   
 
@@ -119,7 +119,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-安装git、nginx"><span class="toc-text">1 安装git、nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-创建git仓库"><span class="toc-text">2 创建git仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-配置Nginx托管文件目录"><span class="toc-text">3 配置Nginx托管文件目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-创建git-hooks"><span class="toc-text">3 创建git hooks</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-安装git、nginx"><span class="toc-text">1 安装git、nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-创建git仓库"><span class="toc-text">2 创建git仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-配置Nginx托管文件目录"><span class="toc-text">3 配置Nginx托管文件目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-创建git-hooks"><span class="toc-text">3 创建git hooks</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署完成"><span class="toc-text">部署完成</span></a></li></ol>
   </div>
 
 
@@ -165,9 +165,7 @@
 
   <div class="article-content">
     
-      <blockquote>
-<p>上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。<br>个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。</p>
-</blockquote>
+      <p>上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。<br>个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。</p>
 <blockquote>
 <p>vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。</p>
 </blockquote>
@@ -175,58 +173,41 @@
 
 <h1 id="2-创建git仓库"><a href="#2-创建git仓库" class="headerlink" title="2 创建git仓库"></a>2 创建git仓库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/repo/</span><br><span class="line">cd /var/repo/</span><br><span class="line">git init --bare myblog.git</span><br></pre></td></tr></table></figure>
 
-<h1 id="3-配置Nginx托管文件目录"><a href="#3-配置Nginx托管文件目录" class="headerlink" title="3 配置Nginx托管文件目录"></a>3 配置Nginx托管文件目录</h1><blockquote>
-<p>创建/var/www/myblog目录，用于Nginx托管。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir -p /var/www/myblog</span><br></pre></td></tr></table></figure>
+<h1 id="3-配置Nginx托管文件目录"><a href="#3-配置Nginx托管文件目录" class="headerlink" title="3 配置Nginx托管文件目录"></a>3 配置Nginx托管文件目录</h1><p>创建/var/www/myblog目录，用于Nginx托管。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/www/myblog</span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <p>修改Nginx的default设置，使root指向hexo目录.</p>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <p>修改root指向的地址</p>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listen 80 default_server;</span><br><span class="line">listen [::]:80 default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">root /var/www/hexo;(此处做修改，其他地方不动)</span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <p>重启Nginx服务，使得改动生效。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
 
-<h1 id="3-创建git-hooks"><a href="#3-创建git-hooks" class="headerlink" title="3 创建git hooks"></a>3 创建<a href="https://git-scm.com/book/zh/v2/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git-%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">git hooks</a></h1><blockquote>
-<p>在自动生成的 hooks 目录下创建一个新的钩子文件：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">vim /var/repo/myblog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+<h1 id="3-创建git-hooks"><a href="#3-创建git-hooks" class="headerlink" title="3 创建git hooks"></a>3 创建<a href="https://git-scm.com/book/zh/v2/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git-%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">git hooks</a></h1><p>在自动生成的 hooks 目录下创建一个新的钩子文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/repo/myblog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <p>在该文件中添加一行代码，指定 Git 的工作树（源代码）和 Git 目录（配置文件等）。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">git --work-tree=/var/www/mybolg --git-dir=/var/repo/myblog.git checkout -f</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; 保存并退出文件，并让该文件变为可执行文件。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git --work-tree=/var/www/mybolg --git-dir=/var/repo/myblog.git checkout -f</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">保存并退出文件，并让该文件变为可执行文件。</span><br></pre></td></tr></table></figure>
 
 <p>chmod +x /var/repo/myblog.git/hooks/post-receive</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 4 配置本地文件</span><br><span class="line">&gt; 修改hexo根目录下的_config.yml 文件，把url改成自己的服务器ip或者绑定的域名</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 4 配置本地文件</span><br><span class="line"></span><br><span class="line">修改hexo根目录下的_config.yml 文件，把url改成自己的服务器ip或者绑定的域名</span><br></pre></td></tr></table></figure>
 
 <p>url: <a href="http://server-ip" target="_blank" rel="noopener">http://server-ip</a> # 改成IP地址或这域名<br>root: /<br>permalink: :year/:month/:day/:title/<br>permalink_defaults: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 5 通过Git部署</span><br><span class="line"></span><br><span class="line">&gt; 先在任意位置处打开git bash从服务器上把myblog.git仓库克隆下来, 以此来将服务器地址添加到受信任的站点中。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 5 通过Git部署</span><br><span class="line"></span><br><span class="line">先在任意位置处打开git bash从服务器上把myblog.git仓库克隆下来, 以此来将服务器地址添加到受信任的站点中。</span><br></pre></td></tr></table></figure>
 
 <p>git clone root@server_ip:/var/repo/myblog.git</p>
-<pre><code>&gt; 第一次进行这一步时会提示是否继续，选yes即可。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 第一次进行这一步时会提示是否继续，选yes即可。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 6 编辑hexo的_config.yml文件，最下方，把之前的git地址换成自己的服务器的，修改为</span><br></pre></td></tr></table></figure>
 
+<p>deploy:<br>  type: git<br>  repo: root@server_ip:/var/repo/myblog.git<br>  branch: master</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 完成</span><br></pre></td></tr></table></figure>
 
-# 6 编辑hexo的_config.yml文件，最下方，把之前的git地址换成自己的服务器的，修改为
-deploy:
-  type: git
-  repo: root@server_ip:/var/repo/myblog.git
-  branch: master
-# 完成
-&gt; hexo clean
-hexo g
-hexo d
-# 部署完成
-&gt; 在浏览器输入自己的地址就可以看到自己的博客了。
-</code></pre>
+<blockquote>
+<p>hexo clean<br>hexo g<br>hexo d</p>
+<pre><code></code></pre></blockquote>
+<h1 id="部署完成"><a href="#部署完成" class="headerlink" title="部署完成"></a>部署完成</h1><p>在浏览器输入自己的地址就可以看到自己的博客了。</p>
+
     
   </div>
 
