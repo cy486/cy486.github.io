@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>把hexo博客部署到自己的云服务器 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="hexo,服务器,">
+  
+
+  <meta name="description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。   vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-ge">
+<meta name="keywords" content="hexo,服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把hexo博客部署到自己的云服务器">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/把hexo博客部署到自己的云服务器/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。   vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-ge">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-03T13:56:54.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把hexo博客部署到自己的云服务器">
+<meta name="twitter:description" content="上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。   vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。  1 安装git、nginx12apt-get updateapt-ge">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6847768532676288",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-安装git、nginx"><span class="toc-text">1 安装git、nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-创建git仓库"><span class="toc-text">2 创建git仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-配置Nginx托管文件目录"><span class="toc-text">3 配置Nginx托管文件目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-创建git-hooks"><span class="toc-text">3 创建git hooks</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-把hexo博客部署到自己的云服务器" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">把hexo博客部署到自己的云服务器</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/教程/">教程</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>上一次把hexo部署到自己的github账号上，但由于github访问比较慢，自己有服务器，所以此次把博客部署到自己的云服务器上。<br>个人建议要是自己的博客的话，直接root用户登陆就可以了。如果有其他用涂，用新创建的用户进行操作。此次采用root用户进行安装。</p>
+</blockquote>
+<blockquote>
+<p>vim使用方法，按i开始编辑，编辑结束按esc，:wq退出。</p>
+</blockquote>
+<h1 id="1-安装git、nginx"><a href="#1-安装git、nginx" class="headerlink" title="1 安装git、nginx"></a>1 安装git、nginx</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install git nginx -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-创建git仓库"><a href="#2-创建git仓库" class="headerlink" title="2 创建git仓库"></a>2 创建git仓库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/repo/</span><br><span class="line">cd /var/repo/</span><br><span class="line">git init --bare myblog.git</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-配置Nginx托管文件目录"><a href="#3-配置Nginx托管文件目录" class="headerlink" title="3 配置Nginx托管文件目录"></a>3 配置Nginx托管文件目录</h1><blockquote>
+<p>创建/var/www/myblog目录，用于Nginx托管。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir -p /var/www/myblog</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改Nginx的default设置，使root指向hexo目录.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改root指向的地址</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listen 80 default_server;</span><br><span class="line">listen [::]:80 default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">root /var/www/hexo;(此处做修改，其他地方不动)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>重启Nginx服务，使得改动生效。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-创建git-hooks"><a href="#3-创建git-hooks" class="headerlink" title="3 创建git hooks"></a>3 创建<a href="https://git-scm.com/book/zh/v2/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git-%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">git hooks</a></h1><blockquote>
+<p>在自动生成的 hooks 目录下创建一个新的钩子文件：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">vim /var/repo/myblog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在该文件中添加一行代码，指定 Git 的工作树（源代码）和 Git 目录（配置文件等）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">git --work-tree=/var/www/mybolg --git-dir=/var/repo/myblog.git checkout -f</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; 保存并退出文件，并让该文件变为可执行文件。</span><br></pre></td></tr></table></figure>
+
+<p>chmod +x /var/repo/myblog.git/hooks/post-receive</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 4 配置本地文件</span><br><span class="line">&gt; 修改hexo根目录下的_config.yml 文件，把url改成自己的服务器ip或者绑定的域名</span><br></pre></td></tr></table></figure>
+
+<p>url: <a href="http://server-ip" target="_blank" rel="noopener">http://server-ip</a> # 改成IP地址或这域名<br>root: /<br>permalink: :year/:month/:day/:title/<br>permalink_defaults: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 5 通过Git部署</span><br><span class="line"></span><br><span class="line">&gt; 先在任意位置处打开git bash从服务器上把myblog.git仓库克隆下来, 以此来将服务器地址添加到受信任的站点中。</span><br></pre></td></tr></table></figure>
+
+<p>git clone root@server_ip:/var/repo/myblog.git</p>
+<pre><code>&gt; 第一次进行这一步时会提示是否继续，选yes即可。
+
+
+# 6 编辑hexo的_config.yml文件，最下方，把之前的git地址换成自己的服务器的，修改为
+deploy:
+  type: git
+  repo: root@server_ip:/var/repo/myblog.git
+  branch: master
+# 完成
+&gt; hexo clean
+hexo g
+hexo d
+# 部署完成
+&gt; 在浏览器输入自己的地址就可以看到自己的博客了。
+</code></pre>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/03/Shadowsocks搭建教程-科学上网/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
