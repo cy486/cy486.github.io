@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>CSDN文章爬取 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSDN,python,">
+  
+
+  <meta name="description" content="计划 由于前些时间新建了个人博客，于是想把csdn的博客迁移到此处，一键迁移功能没有使用成功，所以想到了，直接爬取，然后重新发送 时间：3小时 预期结果：博客文章保存到本地  实施过程  找到文章列表，进行文章爬取，提取到文章的url信息。 进行文章内容的解析，提取文章内容。 保存到本地。 尝试对文章样式进行保存   使用的技术 采用python语言来完成，使用pyquery库进行爬取。 编码 分">
+<meta name="keywords" content="CSDN,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSDN文章爬取">
+<meta property="og:url" content="http://yoursite.com/2019/06/09/CSDN文章爬取/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="计划 由于前些时间新建了个人博客，于是想把csdn的博客迁移到此处，一键迁移功能没有使用成功，所以想到了，直接爬取，然后重新发送 时间：3小时 预期结果：博客文章保存到本地  实施过程  找到文章列表，进行文章爬取，提取到文章的url信息。 进行文章内容的解析，提取文章内容。 保存到本地。 尝试对文章样式进行保存   使用的技术 采用python语言来完成，使用pyquery库进行爬取。 编码 分">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-09T05:30:51.061Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSDN文章爬取">
+<meta name="twitter:description" content="计划 由于前些时间新建了个人博客，于是想把csdn的博客迁移到此处，一键迁移功能没有使用成功，所以想到了，直接爬取，然后重新发送 时间：3小时 预期结果：博客文章保存到本地  实施过程  找到文章列表，进行文章爬取，提取到文章的url信息。 进行文章内容的解析，提取文章内容。 保存到本地。 尝试对文章样式进行保存   使用的技术 采用python语言来完成，使用pyquery库进行爬取。 编码 分">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6847768532676288",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计划"><span class="toc-text">计划</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实施过程"><span class="toc-text">实施过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用的技术"><span class="toc-text">使用的技术</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编码"><span class="toc-text">编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-CSDN文章爬取" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">CSDN文章爬取</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><blockquote>
+<p>由于前些时间新建了个人博客，于是想把csdn的博客迁移到此处，一键迁移功能没有使用成功，所以想到了，直接爬取，然后重新发送<br> 时间：3小时<br> 预期结果：博客文章保存到本地</p>
+</blockquote>
+<h1 id="实施过程"><a href="#实施过程" class="headerlink" title="实施过程"></a>实施过程</h1><blockquote>
+<ol>
+<li>找到文章列表，进行文章爬取，提取到文章的url信息。</li>
+<li>进行文章内容的解析，提取文章内容。</li>
+<li>保存到本地。</li>
+<li>尝试对文章样式进行保存</li>
+</ol>
+</blockquote>
+<h1 id="使用的技术"><a href="#使用的技术" class="headerlink" title="使用的技术"></a>使用的技术</h1><p> 采用python语言来完成，使用pyquery库进行爬取。</p>
+<h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><ol>
+<li>分析文章页面，内容的爬取代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">article = doc(&apos;.blog-content-box&apos;)</span><br><span class="line">#文章标题</span><br><span class="line">title = article(&apos;.title-article&apos;).text()</span><br><span class="line">#文章内容</span><br><span class="line">content = article(&apos;.article_content&apos;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<ol start="2">
+<li><p>进行文章的保存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dir = &quot;F:/python-project/SpiderLearner/CSDNblogSpider/article/&quot;+title+&apos;.txt&apos;</span><br><span class="line">       with open(dir, &apos;a&apos;, encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">           file.write(title+&apos;\n&apos;+content.text())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对文章的url的提取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">urls = doc(&apos;.article-list .content a&apos;)</span><br><span class="line">    return urls</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分页爬取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i in range(3):</span><br><span class="line">    print(i)</span><br><span class="line">    main(offset = i+1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码整合</p>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># _*_coding:utf-8 _*_</span><br><span class="line">#@Time    :2019/6/8 0008 下午 11:00</span><br><span class="line">#@Author  :喜欢二福的沧月君（necydcy@gmail.com）</span><br><span class="line">#@FileName: CSDN.py</span><br><span class="line"></span><br><span class="line">#@Software: PyCharm</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line">from pyquery import PyQuery as pq</span><br><span class="line"></span><br><span class="line">def find_html_content(url):</span><br><span class="line">    headers = &#123;</span><br><span class="line">                &apos;User-Agent&apos;: &apos;Mozilla/5.0(Macintosh;Inter Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gerko) Chrome/52.0.2743.116 Safari/537.36&apos;</span><br><span class="line">            &#125;</span><br><span class="line">    html = requests.get(url,headers=headers).text</span><br><span class="line">    return html</span><br><span class="line">def read_and_wiriteblog(html):</span><br><span class="line">    doc = pq(html)</span><br><span class="line"></span><br><span class="line">    article = doc(&apos;.blog-content-box&apos;)</span><br><span class="line">    #文章标题</span><br><span class="line">    title = article(&apos;.title-article&apos;).text()</span><br><span class="line"></span><br><span class="line">    content = article(&apos;.article_content&apos;)</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        dir = &quot;F:/python-project/SpiderLearner/CSDNblogSpider/article/&quot;+title+&apos;.txt&apos;</span><br><span class="line">        with open(dir, &apos;a&apos;, encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">            file.write(title+&apos;\n&apos;+content.text())</span><br><span class="line">    except Exception:</span><br><span class="line">        print(&quot;保存失败&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def geturls(url):</span><br><span class="line">    content = find_html_content(url)</span><br><span class="line">    doc = pq(content)</span><br><span class="line">    urls = doc(&apos;.article-list .content a&apos;)</span><br><span class="line">    return urls</span><br><span class="line"></span><br><span class="line">def main(offset):</span><br><span class="line">    url = &apos;https://blog.csdn.net/wait_for_taht_day5/article/category/5921557/&apos; + str(offset)</span><br><span class="line">    urls = geturls(url)</span><br><span class="line">    for a in urls.items():</span><br><span class="line">        a_url = a.attr(&apos;href&apos;)</span><br><span class="line">        print(a_url)</span><br><span class="line">        html = find_html_content(a_url)</span><br><span class="line">        read_and_wiriteblog(html)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    for i in range(3):</span><br><span class="line">        print(i)</span><br><span class="line">        main(offset = i+1)</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/07/SSR搭建推荐网站/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
