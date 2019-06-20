@@ -13,8 +13,13 @@ nt-face {
 }
 html.page-home {
   background-image: url('/images/bg.jpg');
+ 
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
 
-  background-blend-mode: screen;
-
-  background: linear-gradient(to left, #5f2c82, #49a09d);
 }
