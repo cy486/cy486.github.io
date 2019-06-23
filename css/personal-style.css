@@ -12,6 +12,7 @@ nt-face {
   font-weight: normal;
 }
 html.page-home {
+	/*
   background-image: url('/images/bg.jpg'); 
   background-position: center 0;
   background-repeat: no-repeat;
@@ -20,5 +21,6 @@ html.page-home {
   -webkit-background-size: cover;
   -o-background-size: cover;
   -moz-background-size: cover;
+  */
 
 }
