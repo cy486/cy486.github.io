@@ -13,13 +13,6 @@ nt-face {
 }
 html.page-home {
 
-  background-image: url('/images/bg.jpg'); 
-  background-position: center 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
+  background-image: url('/images/bg.png'); 
 
 }
