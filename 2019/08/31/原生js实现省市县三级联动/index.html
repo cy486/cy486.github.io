@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>原生js实现省市县三级联动 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="三级联动,">
+  
+
+  <meta name="description" content="思路 首先设置数据创造三个数组，分别存放省市县的元素民称。省级为一维数组，市为二维数组，县为三维数组。 主要流程： 初始化省级菜单，把省级数组里面的元素追加到select的选项框中。 当省级菜单里面元素被点击后，初始化市级菜单，追加到对应的选项框中，区级菜单同理。 当省级菜单没有选项是，由于省级的selectedIndex元素的值为0，所以借此来锁定后面两级菜单，当上一级的selectedInde">
+<meta name="keywords" content="三级联动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生js实现省市县三级联动">
+<meta property="og:url" content="http://yoursite.com/2019/08/31/原生js实现省市县三级联动/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="思路 首先设置数据创造三个数组，分别存放省市县的元素民称。省级为一维数组，市为二维数组，县为三维数组。 主要流程： 初始化省级菜单，把省级数组里面的元素追加到select的选项框中。 当省级菜单里面元素被点击后，初始化市级菜单，追加到对应的选项框中，区级菜单同理。 当省级菜单没有选项是，由于省级的selectedIndex元素的值为0，所以借此来锁定后面两级菜单，当上一级的selectedInde">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-01T02:04:10.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原生js实现省市县三级联动">
+<meta name="twitter:description" content="思路 首先设置数据创造三个数组，分别存放省市县的元素民称。省级为一维数组，市为二维数组，县为三维数组。 主要流程： 初始化省级菜单，把省级数组里面的元素追加到select的选项框中。 当省级菜单里面元素被点击后，初始化市级菜单，追加到对应的选项框中，区级菜单同理。 当省级菜单没有选项是，由于省级的selectedIndex元素的值为0，所以借此来锁定后面两级菜单，当上一级的selectedInde">
+
+  
+
+  
+    <link rel="icon" href="favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6847768532676288",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-原生js实现省市县三级联动" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">原生js实现省市县三级联动</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.08.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/教程/">教程</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li>首先设置数据创造三个数组，分别存放省市县的元素民称。省级为一维数组，市为二维数组，县为三维数组。</li>
+<li>主要流程：<ol>
+<li>初始化省级菜单，把省级数组里面的元素追加到select的选项框中。</li>
+<li>当省级菜单里面元素被点击后，初始化市级菜单，追加到对应的选项框中，区级菜单同理。</li>
+<li>当省级菜单没有选项是，由于省级的selectedIndex元素的值为0，所以借此来锁定后面两级菜单，当上一级的selectedIndex为0是。不追加元素。</li>
+<li>由于采用的是追加元素的方式，所以在每次点击时，需要把下一级菜单清零（否则会越点击越多）。</li>
+</ol>
+</li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">var provinces = [&quot;河北省&quot;,&quot;吉林省&quot;];</span><br><span class="line">var cities = [</span><br><span class="line">    [&quot;石家庄市&quot;,&quot;廊坊市&quot;],</span><br><span class="line">    [&quot;长春市&quot;,&quot;吉林市&quot;]</span><br><span class="line">];</span><br><span class="line">var areas = [</span><br><span class="line">    [</span><br><span class="line">        [&quot;市中区&quot;, &quot;历下区&quot;, &quot;天桥区&quot;, &quot;槐荫区&quot;, &quot;历城区&quot;, &quot;长清区&quot;],</span><br><span class="line">        [&quot;市南区&quot;, &quot;市北区&quot;, &quot;四方区&quot;, &quot;李沧区&quot;, &quot;城阳区&quot;, &quot;崂山区&quot;]</span><br><span class="line">    ],</span><br><span class="line">    [</span><br><span class="line">        [&quot;桥西区&quot;, &quot;新华区&quot;, &quot;长安区&quot;, &quot;裕华区&quot;, &quot;井陉区&quot;, &quot;藁城区&quot;, &quot;鹿泉区&quot;, &quot;栾城区&quot;],</span><br><span class="line">        [&quot;安次区&quot;, &quot;广阳区&quot;, &quot;三河市&quot;, &quot;霸州市&quot;, &quot;香河县&quot;, &quot;永清县&quot;, &quot;固安县&quot;, &quot;文安县&quot;]</span><br><span class="line">    ]</span><br><span class="line">];</span><br><span class="line">//初始化变量</span><br><span class="line">var province,city,area;</span><br><span class="line">//初始化的代码</span><br><span class="line">function initProvince() &#123;</span><br><span class="line">//接收页面的元素</span><br><span class="line">    province = document.getElementById(&quot;province&quot;);</span><br><span class="line">    city = document.getElementById(&quot;city&quot;);</span><br><span class="line">    area = document.getElementById(&quot;area&quot;);</span><br><span class="line">    //清零操作</span><br><span class="line">    province.options.length = 1;</span><br><span class="line">    for (var i = 0; i &lt;provinces.length ; i++) &#123;</span><br><span class="line">        var option = new Option(provinces[i],provinces[i]);</span><br><span class="line">        province.options.add(option);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//当省级的选项被点击</span><br><span class="line">function provinceChange() &#123;</span><br><span class="line">初始化区级</span><br><span class="line">    cityChange();</span><br><span class="line">    city.options.length = 1;</span><br><span class="line">    //当上一级没有被选择时候，直接返回，不追加元素。</span><br><span class="line">    if (province.selectedIndex === 0) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //由于数组是从0开始，元素的选择数从1开始，所以减1</span><br><span class="line">    var pIndex = province.selectedIndex;</span><br><span class="line">    for (var i = 0; i &lt;cities[pIndex-1].length ; i++) &#123;</span><br><span class="line">        var option = new Option(cities[pIndex-1][i],cities[pIndex-1][i]);</span><br><span class="line">        city.options.add(option);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//当省级被点击时候解锁地区的代码</span><br><span class="line">function cityChange() &#123;</span><br><span class="line">    area.options.length = 1;</span><br><span class="line">    if (city.selectedIndex === 0)&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    var pIndex = province.selectedIndex;</span><br><span class="line">    var aIndex = city.selectedIndex;</span><br><span class="line">    for (var i = 0; i &lt; areas[pIndex-1][aIndex-1].length ; i++) &#123;</span><br><span class="line">        areasm = areas[pIndex-1][aIndex-1][i];</span><br><span class="line">        var option = new Option(areasm,areasm);</span><br><span class="line">        area.options.add(option);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.onload = function () &#123;</span><br><span class="line">    initProvince();</span><br><span class="line">    province.onchange = provinceChange;</span><br><span class="line">    city.onchange = cityChange;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/08/29/快速排序/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
