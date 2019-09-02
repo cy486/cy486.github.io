@@ -7,26 +7,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mysql8.0版本的驱动问题 | 喜欢二福的沧月君的小站</title>
+  <title>ubuntu下安装ftp | 喜欢二福的沧月君的小站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="mysql,">
+    <meta name="keywords" content="ftp,ubuntu,">
   
 
-  <meta name="description" content="起因由于重新装了一遍系统，下载了最新版本的mysql。今天在写项目的时候，jdbc的链接出现了问题，上网查找了好久，终于找到解决办法和原因。 方法 使用新版本的mysql连接jar包。  更换连接的drive和url代码： 1234driver=com.mysql.cj.jdbc.Driverurl=jdbc:mysql://localhost:3306/kettleuseUnicode=true">
-<meta name="keywords" content="mysql">
+  <meta name="description" content="1、安装vsftpd1sudo apt-get install vsftpd  2、创建ftp用户 创建用户目录   1sudo mkdir /home/uftp   创建用户  1sudo useradd -d /home/uftp -s /bin/bash uftp   修改密码  1sudo passwd uftp  3. 配置vsftpd.conf1sudo vim /etc/vsftpd">
+<meta name="keywords" content="ftp,ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql8.0版本的驱动问题">
-<meta property="og:url" content="http://yoursite.com/2019/09/01/mysql8-0版本的驱动问题/index.html">
+<meta property="og:title" content="ubuntu下安装ftp">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/ubuntu下安装ftp/index.html">
 <meta property="og:site_name" content="喜欢二福的沧月君的小站">
-<meta property="og:description" content="起因由于重新装了一遍系统，下载了最新版本的mysql。今天在写项目的时候，jdbc的链接出现了问题，上网查找了好久，终于找到解决办法和原因。 方法 使用新版本的mysql连接jar包。  更换连接的drive和url代码： 1234driver=com.mysql.cj.jdbc.Driverurl=jdbc:mysql://localhost:3306/kettleuseUnicode=true">
+<meta property="og:description" content="1、安装vsftpd1sudo apt-get install vsftpd  2、创建ftp用户 创建用户目录   1sudo mkdir /home/uftp   创建用户  1sudo useradd -d /home/uftp -s /bin/bash uftp   修改密码  1sudo passwd uftp  3. 配置vsftpd.conf1sudo vim /etc/vsftpd">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-01T13:29:49.301Z">
+<meta property="og:updated_time" content="2019-09-02T08:19:48.382Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql8.0版本的驱动问题">
-<meta name="twitter:description" content="起因由于重新装了一遍系统，下载了最新版本的mysql。今天在写项目的时候，jdbc的链接出现了问题，上网查找了好久，终于找到解决办法和原因。 方法 使用新版本的mysql连接jar包。  更换连接的drive和url代码： 1234driver=com.mysql.cj.jdbc.Driverurl=jdbc:mysql://localhost:3306/kettleuseUnicode=true">
+<meta name="twitter:title" content="ubuntu下安装ftp">
+<meta name="twitter:description" content="1、安装vsftpd1sudo apt-get install vsftpd  2、创建ftp用户 创建用户目录   1sudo mkdir /home/uftp   创建用户  1sudo useradd -d /home/uftp -s /bin/bash uftp   修改密码  1sudo passwd uftp  3. 配置vsftpd.conf1sudo vim /etc/vsftpd">
 
   
 
@@ -120,20 +120,20 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用kettle时候也出现了同样的问题"><span class="toc-text">使用kettle时候也出现了同样的问题</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、安装vsftpd"><span class="toc-text">1、安装vsftpd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、创建ftp用户"><span class="toc-text">2、创建ftp用户</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-配置vsftpd-conf"><span class="toc-text">3. 配置vsftpd.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给予权限"><span class="toc-text">给予权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动停止重启服务"><span class="toc-text">启动停止重启服务</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-mysql8-0版本的驱动问题" class="article article-type-post" itemprop="blogPost">
+   <article id="post-ubuntu下安装ftp" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">mysql8.0版本的驱动问题</h1>
+    <h1 class="post-title">ubuntu下安装ftp</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2019.09.01</span>
+        <span>2019.09.02</span>
       </span>
 
       
@@ -146,7 +146,7 @@
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/遇到的各种问题/">遇到的各种问题</a>
+    <a class="article-category-link" href="/categories/教程/">教程</a>
   </span>
 
 
@@ -166,22 +166,36 @@
 
   <div class="article-content">
     
-      <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>由于重新装了一遍系统，下载了最新版本的mysql。今天在写项目的时候，jdbc的链接出现了问题，上网查找了好久，终于找到解决办法和原因。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ul>
-<li><p>使用新版本的mysql连接jar包。</p>
-</li>
-<li><p>更换连接的drive和url代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driver=com.mysql.cj.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://localhost:3306/kettleuseUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT</span><br><span class="line">user=root</span><br><span class="line">password=root</span><br></pre></td></tr></table></figure>
+      <h1 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure>
 
-<h1 id="使用kettle时候也出现了同样的问题"><a href="#使用kettle时候也出现了同样的问题" class="headerlink" title="使用kettle时候也出现了同样的问题"></a>使用kettle时候也出现了同样的问题</h1><p>对于 8.x 版本的 MySQL，jdbc 连接驱动方式有所变化，不能使用现有的 MySQL 连接配置方式，需要使用自定义 jdbc 连接方式（数据库类型选择<strong>Generic Database</strong>），jdbc驱动jar需要使用<strong>8.x.jar</strong></p>
-<ul>
-<li>jdbc.driver=com.mysql.cj.jdbc.Driver</li>
-<li>jdbc.url=jdbc:<a href="http://kcd.nivalsoul.cn/forward?goto=" target="_blank" rel="noopener">mysql://localhost:3306/sys_test?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;zeroDateTimeBehavior=CONVERT_TO_NULL</a></li>
-<li>jdbc.username=root</li>
-<li>jdbc.password=root</li>
-</ul>
-</li>
-</ul>
+<h1 id="2、创建ftp用户"><a href="#2、创建ftp用户" class="headerlink" title="2、创建ftp用户"></a>2、创建ftp用户</h1><ol>
+<li>创建用户目录 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /home/uftp</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建用户</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -d /home/uftp -s /bin/bash uftp</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改密码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd uftp</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-配置vsftpd-conf"><a href="#3-配置vsftpd-conf" class="headerlink" title="3. 配置vsftpd.conf"></a>3. 配置vsftpd.conf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>打开后：按i</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">userlist_deny=NO</span><br><span class="line">userlist_enable=YES</span><br><span class="line">#允许登录的用户</span><br><span class="line">userlist_file=/etc/allowed_users</span><br><span class="line">seccomp_sandbox=NO</span><br><span class="line">#默认ftp下载目录</span><br><span class="line">local_root=/home/uftp/</span><br><span class="line">local_enable=YES</span><br><span class="line">#设置文件上传</span><br><span class="line">write_enable=YES</span><br><span class="line">#使用utf8</span><br><span class="line">utf8_filesystem=YES</span><br></pre></td></tr></table></figure>
+
+<p>允许用户登录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/allowed_users</span><br></pre></td></tr></table></figure>
+
+<p>在文件夹中加入uftp，保存退出</p>
+<h1 id="给予权限"><a href="#给予权限" class="headerlink" title="给予权限"></a>给予权限</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R uftp /home/uftp</span><br></pre></td></tr></table></figure>
+
+<h1 id="启动停止重启服务"><a href="#启动停止重启服务" class="headerlink" title="启动停止重启服务"></a>启动停止重启服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/vsftpd start</span><br><span class="line">sudo /etc/init.d/vsftpd stop</span><br><span class="line">sudo /etc/init.d/vsftpd restart</span><br></pre></td></tr></table></figure>
+
 
     
   </div>
@@ -219,10 +233,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/08/31/原生js实现省市县三级联动/">
+    <a class="show pull-left" href="/2019/09/01/mysql8-0版本的驱动问题/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/09/02/ubuntu下安装ftp/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
