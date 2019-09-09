@@ -7,7 +7,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>LeetCode第四题 | 喜欢二福的沧月君的小站</title>
+  <title>LeetCode第三题 | 喜欢二福的沧月君的小站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,18 +15,18 @@
     <meta name="keywords" content="lettcode,算法,">
   
 
-  <meta name="description" content="题目：There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and">
+  <meta name="description" content="题目Given a string, find the length of the longest substring without repeating characters. Example 1: 123Input: &amp;quot;abcabcbb&amp;quot;Output: 3 Explanation: The answer is &amp;quot;abc&amp;quot;, with the length">
 <meta name="keywords" content="lettcode,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode第四题">
-<meta property="og:url" content="http://yoursite.com/2019/09/09/LeetCode第四题/index.html">
+<meta property="og:title" content="LeetCode第三题">
+<meta property="og:url" content="http://yoursite.com/2019/09/09/LeetCode第三题/index.html">
 <meta property="og:site_name" content="喜欢二福的沧月君的小站">
-<meta property="og:description" content="题目：There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and">
+<meta property="og:description" content="题目Given a string, find the length of the longest substring without repeating characters. Example 1: 123Input: &amp;quot;abcabcbb&amp;quot;Output: 3 Explanation: The answer is &amp;quot;abc&amp;quot;, with the length">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T15:22:42.786Z">
+<meta property="og:updated_time" content="2019-09-09T15:31:38.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode第四题">
-<meta name="twitter:description" content="题目：There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and">
+<meta name="twitter:title" content="LeetCode第三题">
+<meta name="twitter:description" content="题目Given a string, find the length of the longest substring without repeating characters. Example 1: 123Input: &amp;quot;abcabcbb&amp;quot;Output: 3 Explanation: The answer is &amp;quot;abc&amp;quot;, with the length">
 
   
 
@@ -120,15 +120,15 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码："><span class="toc-text">代码：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-LeetCode第四题" class="article article-type-post" itemprop="blogPost">
+   <article id="post-LeetCode第三题" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">LeetCode第四题</h1>
+    <h1 class="post-title">LeetCode第三题</h1>
 
     <div class="article-meta">
       <span>
@@ -166,22 +166,24 @@
 
   <div class="article-content">
     
-      <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.</p>
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
+      <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Given a string, find the length of the <strong>longest substring</strong> without repeating characters.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 = [1, 3]</span><br><span class="line">nums2 = [2]</span><br><span class="line"></span><br><span class="line">The median is 2.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcabcbb&quot;</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: The answer is &quot;abc&quot;, with the length of 3.</span><br></pre></td></tr></table></figure>
 
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 = [1, 2]</span><br><span class="line">nums2 = [3, 4]</span><br><span class="line"></span><br><span class="line">The median is (2 + 3)/2 = 2.5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;bbbbb&quot;</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: The answer is &quot;b&quot;, with the length of 1.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;pwwkew&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The answer is &quot;wke&quot;, with the length of 3. </span><br><span class="line">             Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</span><br></pre></td></tr></table></figure>
 
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
-<li>类似于插入排序</li>
-<li>设置一个辅助数组，把输入的两个数组重新进行排序</li>
-<li>中间的数就是中位数</li>
-<li>总数单数为中间数，偶数为中间两个数的平均数</li>
+<li>双指针问题</li>
+<li>利用java的set集合</li>
+<li>从第一个字母开始遍历，由于set集合的不可重复性，所以遇到重复便更换前进指针</li>
+<li>记录最大的长度</li>
+<li>比如，“abccabcbb”   开始，i指针开始指针a,j指针也从a开始向后遍历，当遇到第二个c时候停在第二个c，开始移动i，知道i遍历到第三个c停止，i继续前几一个，无重复便继续前进。</li>
 </ul>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public double findMedianSortedArrays(int[] nums1, int[] nums2) &#123;</span><br><span class="line">       int max = nums1.length+nums2.length;//计算两个数组的总长度</span><br><span class="line">            int[] nums= new int[max];、、新建辅助数组</span><br><span class="line">            int i=0,j=0;//分别指向两个数组的第一个数</span><br><span class="line">            int k = 0; //记录辅助数组下标</span><br><span class="line">            while (i&lt;nums1.length&amp;&amp;j&lt;nums2.length)&#123;</span><br><span class="line">            //从小到大排序</span><br><span class="line">                if (nums1[i] &lt; nums2[j])&#123;</span><br><span class="line">                    nums[k++] = nums1[i++];</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                    nums[k++] = nums2[j++];</span><br><span class="line">                &#125;</span><br><span class="line">            while (i &lt; nums1.length)&#123;//nums2遍历完</span><br><span class="line">                nums[k++] = nums1[i++];</span><br><span class="line">            &#125;</span><br><span class="line">            while (j &lt; nums2.length)&#123;//nums1已经遍历完</span><br><span class="line">                nums[k++] = nums2[j++];</span><br><span class="line">            &#125;</span><br><span class="line">            if (max%2 == 0)&#123;//总数为偶数</span><br><span class="line">                return (double)(nums[max/2-1]+nums[max/2])/2;</span><br><span class="line">            &#125;</span><br><span class="line">            return (double)nums[max/2];//总数为基数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">	     Set&lt;Character&gt; set = new HashSet&lt;Character&gt;();</span><br><span class="line">        int length = s.length(),i=0,j=0,result=0;</span><br><span class="line">        while(i&lt;length&amp;&amp;j&lt;length)&#123;</span><br><span class="line">            if(set.contains(s.charAt(j)))&#123;</span><br><span class="line">                set.remove(s.charAt(i++));</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                set.add(s.charAt(j++));</span><br><span class="line">                result = Math.max(result,j-i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     
@@ -220,10 +222,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/09/08/腾讯云搭建大数据环境/">
+    <a class="show pull-left" href="/2019/09/09/LeetCode第四题/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/09/09/LeetCode第三题/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
