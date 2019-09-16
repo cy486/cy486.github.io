@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>git常用命令总结 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="git,">
+  
+
+  <meta name="description" content="新建代码库 在当前目录新建代码库 1git init  新建目录，将其初始化为git代码库 1git init project-name  下载一个项目到本地 1git cloen url    配置 显示当前git配置 1git config --list  编辑git配置文件 1git config -e [--global]  设置提交代码时候的用户信息 12git config [--gl">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令总结">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/git常用命令总结/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="新建代码库 在当前目录新建代码库 1git init  新建目录，将其初始化为git代码库 1git init project-name  下载一个项目到本地 1git cloen url    配置 显示当前git配置 1git config --list  编辑git配置文件 1git config -e [--global]  设置提交代码时候的用户信息 12git config [--gl">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-16T01:27:22.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git常用命令总结">
+<meta name="twitter:description" content="新建代码库 在当前目录新建代码库 1git init  新建目录，将其初始化为git代码库 1git init project-name  下载一个项目到本地 1git cloen url    配置 显示当前git配置 1git config --list  编辑git配置文件 1git config -e [--global]  设置提交代码时候的用户信息 12git config [--gl">
+
+  
+
+  
+    <link rel="icon" href="favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6847768532676288",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#新建代码库"><span class="toc-text">新建代码库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#增加删除文件"><span class="toc-text">增加删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码提交"><span class="toc-text">代码提交</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支"><span class="toc-text">分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签"><span class="toc-text">标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看信息"><span class="toc-text">查看信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程同步"><span class="toc-text">远程同步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销"><span class="toc-text">撤销</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-git常用命令总结" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">git常用命令总结</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/知识总结/">知识总结</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h1><ul>
+<li><p>在当前目录新建代码库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建目录，将其初始化为git代码库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init project-name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载一个项目到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cloen url</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ul>
+<li><p>显示当前git配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑git配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -e [--global]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置提交代码时候的用户信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] user.name &quot;[name]&quot;</span><br><span class="line">git config [--global] user.email &quot;[email address]&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="增加删除文件"><a href="#增加删除文件" class="headerlink" title="增加删除文件"></a>增加删除文件</h1><ul>
+<li><p>添加指定文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [file1] [file2] ....</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加指定目录到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加当前目录的所有文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加每个变化前，都会要求确认，添加同一个文件的多处变化，可以实现分次提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除工作区文件，并且将这次删除放入暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止追踪指定文件，但该文件保留在工作区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gir rm --cached [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>改名文件并且将这个改名文件放在暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv [file-original] [file-rebnmaed]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h1><ul>
+<li><p>提交暂存区到仓库区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交暂存区的指定文件到仓库区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit [file1][file2] ... -m [message]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交工作区自上次commit之后的拜年话，直接到仓库区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交时显示所有的区别信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用一次新的commit，替代上一次的提交，如果代码没有任何新的变化，贼用来改写上一次comment的提交信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -amend -m [message]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重做上一次commit，并包括指定文件的新变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -amend [file1][file2]...</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><ul>
+<li><p>列出所有本地分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有本地分支和远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个分支，但依然停留在当前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [branch-name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个分支，并切换到新建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个分支，指向指定commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [branch][commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个分支，与指定的远程分支建立追踪关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --track [branch][remote-branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到指定分支，并更新工作区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到上一个分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git chechout -</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立追踪关系，在现有分支与指定的远程分支之间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream [branch][remote-branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并指定分支和当前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge [branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择一个commit，合并进当前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry -pick [branch-name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branch-name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branch-name]</span><br><span class="line">git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><ul>
+<li><p>列出所有tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个tag在当前的commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag [tag]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个tag在指定commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除本地tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d [tag]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除远程tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :refs/tags/[tagname]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看tag信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show [tag]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交指定的tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] [tag]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交所有tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个分支，指向某个tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [branch] [tag]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h1><ul>
+<li><p>显示所有变更信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示当前分支的历史版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示commit历史，以及每次commit发生更换的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --stat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>搜索历史提交，根据关键词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git long -S [keyword]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示某个commit之后的所有变化，其“提交说明”必须符合搜索条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log [tag] HEAD --grep feature</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示某个文件的版本历史，包括文件改名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log --follow [file]</span><br><span class="line">git whatchanged [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示指定文件相关的每一次diff</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示过去五次提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -5 --pretty --oneline</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示所有提交过的用户，按提交次数排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git shor tlog -sn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示指定文件是什么人在什么时间修改过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示暂存区和工作区的差别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示暂存区和上一个commit的差别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示两次提交之间的差异</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [first-branch]...[second-branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示今天你写了多少行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --shorststat &quot;@&#123;0 day ago&#125;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示某次提交的元数据和内容变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示每次提交发生变化的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show --name-only [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示某次提交时，某个文件的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show [commit]:[filename]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示当前分支的最近几次提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h1><ul>
+<li><p>下载远程仓库的所有变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [remote]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示所有远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示某远程仓库的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show [remote]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增加一个新的远程仓库，并命名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add [shortname][url]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取回远程仓库的变化，并与本地分支合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull [remote] [branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传本地指定分支到远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] [branch]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强行推送当前分支到远程仓库，即使有冲突</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --force</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推送所有分支到远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --all</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><ul>
+<li><p>恢复暂存区的指定文件到工作区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复某个commit的指定文件到暂存区和工作区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [commit] [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复暂存区的所有文件到工作区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fir checkout</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置暂存区的指定文件，与上一次commit保持一致，但是工作区不变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fir reset [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置暂存区与工作区，与上一次commit保持一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置当前分支的HEAD为指定commit，同事重置暂存区和工作区，与指定commit一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置当前HEAD为指定commit，但保持暂存区和工作区不变\</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --keep [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个commit，用来撤销指定commit，后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert [commit]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>暂时未提交的变化移除，稍后再移入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/09/LeetCode第三题/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
