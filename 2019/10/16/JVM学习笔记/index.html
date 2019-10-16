@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>JVM学习笔记 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JVM,">
+  
+
+  <meta name="description" content="运行时数据区域：程序计数器，java虚拟机栈，本地方法区，堆，方法区（运行时常量池）。  程序计数器：记录正在执行的虚拟机字节码指令的地址（执行的为本地方法就为空）。 Java虚拟机栈：每个java方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数表栈，常量池引用等信息。从方法调用直至执行完成的过程，对应着一个栈帧在java虚拟机栈中的入栈和出栈的过程。可以通过-Xss这个虚拟机参数来指定每">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/10/16/JVM学习笔记/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="运行时数据区域：程序计数器，java虚拟机栈，本地方法区，堆，方法区（运行时常量池）。  程序计数器：记录正在执行的虚拟机字节码指令的地址（执行的为本地方法就为空）。 Java虚拟机栈：每个java方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数表栈，常量池引用等信息。从方法调用直至执行完成的过程，对应着一个栈帧在java虚拟机栈中的入栈和出栈的过程。可以通过-Xss这个虚拟机参数来指定每">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-16T14:15:25.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM学习笔记">
+<meta name="twitter:description" content="运行时数据区域：程序计数器，java虚拟机栈，本地方法区，堆，方法区（运行时常量池）。  程序计数器：记录正在执行的虚拟机字节码指令的地址（执行的为本地方法就为空）。 Java虚拟机栈：每个java方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数表栈，常量池引用等信息。从方法调用直至执行完成的过程，对应着一个栈帧在java虚拟机栈中的入栈和出栈的过程。可以通过-Xss这个虚拟机参数来指定每">
+
+  
+
+  
+    <link rel="icon" href="favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6847768532676288",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#运行时数据区域："><span class="toc-text">运行时数据区域：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾回收："><span class="toc-text">垃圾回收：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集算法："><span class="toc-text">垃圾收集算法：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器"><span class="toc-text">垃圾收集器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存分配和回收策略"><span class="toc-text">内存分配和回收策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存分配策略"><span class="toc-text">内存分配策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类加载机制："><span class="toc-text">类加载机制：</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-JVM学习笔记" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JVM学习笔记</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.10.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="运行时数据区域："><a href="#运行时数据区域：" class="headerlink" title="运行时数据区域："></a>运行时数据区域：</h1><p>程序计数器，java虚拟机栈，本地方法区，堆，方法区（运行时常量池）。</p>
+<ul>
+<li>程序计数器：记录正在执行的虚拟机字节码指令的地址（执行的为本地方法就为空）。</li>
+<li>Java虚拟机栈：每个java方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数表栈，常量池引用等信息。从方法调用直至执行完成的过程，对应着一个栈帧在java虚拟机栈中的入栈和出栈的过程。<br>可以通过-Xss这个虚拟机参数来指定每一个线程的Java虚拟机栈内存大小，在JDK1.4中默认是256k，儿子啊JDK1.5位1M。<br>java -Xss HackJava</li>
+<li>本地方法栈：本地方法栈与Java虚拟机栈类似，他们之间的钱包瘪只不过是本地方法栈为本地方法服务<br>本地方法一般是用其他语言编写的，并且被便以为基于本机硬件和操作系统的程序，对待这些地方需要特别处理。</li>
+<li>堆：所有对象都在这里分配内存，是垃圾回收的主要区域<br>现代的垃圾收集器基本都是采用分带收集算法，其主要的思想是针对不同类型的对象采用不同的垃圾回收算法。可以将堆分为两代<br>新生代和老年代。<br>堆不需要连续内存，并且可以动态增加其内存，增加失败会报错：OutOfMenoryError异常<br>可以通过-Xms和-Xmx这两个虚拟机参数指定一个程序的堆内存的大小，第一个参数设置初始值，第二个参数设置最大值<br>java -Xms 1M -Xmx2M HackTheJava</li>
+<li>方法区：用于存放已被加载的类信息、常量、静态变量、及时编译器编译后的代码等数据<br>和堆一样不需要梁旭的内存，并且可以动态扩展，一样跑出错误<br>对这块区域进行垃圾回收的主要目标是对常量池的回收和堆类的卸载，但一般比较困难实现。</li>
+</ul>
+<h1 id="垃圾回收："><a href="#垃圾回收：" class="headerlink" title="垃圾回收："></a>垃圾回收：</h1><ul>
+<li>可达性分析算法：<br>以GCRoot为起始点进行搜索，可达的对象都是存活的，不可达的对象都是可回收的。<br>GCRoot一般包含以下内容</li>
+</ul>
+<ol>
+<li>虚拟机栈中局部变量表中引用的对象</li>
+<li>本地方法栈中JNI中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中的常量引用对象<br>方法区的回收：<br>finalize（）实现自救<br>四种引用类型：强引用，软引用，弱引用，虚引用</li>
+</ol>
+<h1 id="垃圾收集算法："><a href="#垃圾收集算法：" class="headerlink" title="垃圾收集算法："></a>垃圾收集算法：</h1><ol>
+<li>标记 - 清除<br>标记阶段：程序会检查每个对象是否是活动对象，如果是活动对象，则程序会在对象头部打上标记。<br>清除阶段：进行对象回收并取标记位，另外，还会判断回收后的分块与前一个空想分块是否连续。连续就合并，<br>回收对象就是把对象作为分块，连接到空闲链表中。</li>
+<li>标记 - 整理<br>让所有的存活对象向一端移动，然后直接清理掉端边界以外的内存。</li>
+<li>复制<br>将内存划分为大小相等的两块，每次只能使用其中的一块，只一块用完以后就将存活的复制到另一块上去，把使用的空间进行一次清理<br>现代的虚拟机采用这个方法回收新生代，一个大的Eden和两个小的Survivor。每次使用一个Eden和一个Survior，然后复制到另一个Servior<br>Survivor存储不下就放到老年代。</li>
+</ol>
+<ul>
+<li>分代收集<br>将堆分为新生代和老年代。<br>新生代使用复制算法，老年代使用标记清除或者标记整理</li>
+</ul>
+<h1 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h1><p>除了CMS个G1之外，其他的垃圾收集器都是以串行的方式执行</p>
+<ol>
+<li><p>Serial（串行）收集器 在Client场景下的默认新生代收集器</p>
+</li>
+<li><p>ParNew收集器：他是Serial收集器的多线程版本，在Server场景下的默认新生代收集器</p>
+</li>
+<li><p>Parallel Scavenge收集器 ： 多线程收集器，</p>
+</li>
+<li><p>Serial Old收集器： 老年代的串行收集器</p>
+</li>
+<li><p>Parallel Old收集器： 老年代多线程的串行收集器</p>
+</li>
+<li><p>CMS收集器：标记清除<br>四个阶段<br>初始标记：仅仅只标记一下GC Roots能直接关联到的对象，速度很快，需要停顿。<br>并发标记：进行GC Roots Tracing过程，整个回收过程中好事最长，不需要停顿。<br>重新标记：为了修正并发标记期间因为用户程序继续运行而导致标记产生变动的那部分标记，需要停顿。<br>并发清除。</p>
+</li>
+<li><p>G1收集器：</p>
+</li>
+</ol>
+<h1 id="内存分配和回收策略"><a href="#内存分配和回收策略" class="headerlink" title="内存分配和回收策略"></a>内存分配和回收策略</h1><p>Minor GC 和 Full GC<br>MinorGC回收新生代，频繁调用<br>FullGC回收老年代和新生代，少执行，时间长。</p>
+<h1 id="内存分配策略"><a href="#内存分配策略" class="headerlink" title="内存分配策略"></a>内存分配策略</h1><ol>
+<li>对象优先在Eden分配</li>
+<li>大对象直接进入老年代（长字符串和数组）</li>
+<li>长期存活的对象直接进入老年代</li>
+<li>动态进入老年代</li>
+<li>空间分配担保</li>
+</ol>
+<p>进行Full GC的条件：<br>老年代空间不足，空间分配担保失败</p>
+<h1 id="类加载机制："><a href="#类加载机制：" class="headerlink" title="类加载机制："></a>类加载机制：</h1><p>在运行时动态加载的，因为会占用空间。<br>加载，验证，准备，解析，初始化，使用，卸载。</p>
+<p>类的加载过程包括<br>加载，验证，准备，解析，初始化。<br>类加载器：启动类加载器，在javahome的lib中，扩展类加载器，应用程序类加载器。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/15/git常用命令总结/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
