@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>操作系统与计算机网络部分 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="操作系统,">
+  
+
+  <meta name="description" content="这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。课程地址 前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。  进程和线程区别联系 进程是资源分配的基本单位，线程是程序执行的最小单位。  进程有相互独立数据空间，线程分享进">
+<meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统与计算机网络部分">
+<meta property="og:url" content="http://yoursite.com/2019/11/01/操作系统与计算机网络部分/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。课程地址 前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。  进程和线程区别联系 进程是资源分配的基本单位，线程是程序执行的最小单位。  进程有相互独立数据空间，线程分享进">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="e:%5Cmyblog%5Cthemes%5Cfexo%5Csource%5Cimages%5Clinux.png">
+<meta property="og:updated_time" content="2019-11-01T16:00:40.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统与计算机网络部分">
+<meta name="twitter:description" content="这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。课程地址 前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。  进程和线程区别联系 进程是资源分配的基本单位，线程是程序执行的最小单位。  进程有相互独立数据空间，线程分享进">
+<meta name="twitter:image" content="e:%5Cmyblog%5Cthemes%5Cfexo%5Csource%5Cimages%5Clinux.png">
+
+  
+
+  
+    <link rel="icon" href="favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6847768532676288",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程"><span class="toc-text">进程和线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#区别联系"><span class="toc-text">区别联系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程调度"><span class="toc-text">线程调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程切换步骤"><span class="toc-text">线程切换步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程通讯（-IPC-）"><span class="toc-text">进程通讯（ IPC ）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协程"><span class="toc-text">协程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-操作系统与计算机网络部分" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">操作系统与计算机网络部分</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/面试总结/">面试总结</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。<a href="https://kaiwu.lagou.com/course/courseInfo.htm?courseId=1#/detail/pc?id=3" target="_blank" rel="noopener">课程地址</a></p>
+<p>前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。</p>
+<p><img src="E:%5Cmyblog%5Cthemes%5Cfexo%5Csource%5Cimages%5Clinux.png" alt="linux"></p>
+<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><h2 id="区别联系"><a href="#区别联系" class="headerlink" title="区别联系"></a>区别联系</h2><ul>
+<li><p>进程是资源分配的基本单位，线程是程序执行的最小单位。</p>
+</li>
+<li><p>进程有相互独立数据空间，线程分享进程的数据空间。</p>
+</li>
+<li><p>一个程序最少有一个进程，一个进程最少有一个线程。</p>
+</li>
+</ul>
+<h2 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h2><p> 时间片轮转调度、先来先服务调度、优先级调度、多级反馈队列调度以及高响应比优先调度 </p>
+<p>*<em>时间片轮转调度 *</em></p>
+<ul>
+<li><strong>时间片（quantum）</strong>：每个进程被分配一个时间段，即允许该进程在该时间段中运行，如果在时间片结束时该进程还在运行，则将剥夺CPU给下一个进程，如果该进程在时间片结束前阻塞或结束，则CPU立即切换</li>
+<li>假设n个就绪进程，时间片q，每个就绪进程得到1/n的CPU时间，任何就绪进程最多等待(n-1)q单位时间</li>
+<li>平均周转时间通常优于SJF</li>
+<li>响应时间一定优于SJF</li>
+<li>性能分析：<ul>
+<li>q如果很大，则FIFO</li>
+<li>q如果很小，则进程切换，或称上下文切换（context switch）开销太大，所谓上下文切换是：从一个进程切换到另一个进程是需要一定的时间的，所以q必须远远大于上下文切换时间</li>
+</ul>
+</li>
+<li>结论：时间片设得太短会导致过多的进程切换，降低了CPU的效率；而设得太长有可能引起对短的交互请求的响应时间变长，通常将时间片设为20ms~50ms是合理的这种</li>
+</ul>
+<p><strong>先来先服务（FCFS：first-come first-served）</strong></p>
+<ul>
+<li>容易理解：建立一个队列，选取进程运行时，从队列头部选取，添加进程时，添加到队列的尾部</li>
+<li>但是通过例子可以发现，短进程比长进程先执行，平均等待时间会缩短</li>
+</ul>
+<p><strong>优先级调度（Priority Schedule）</strong></p>
+<ul>
+<li>每个进程都有一个优先数（priority number），通常是整数</li>
+<li>Scheduler每次会选取就绪队列中，优先级最高的进程执行</li>
+<li>当优先级定义为“进程需要的CPU时间”时，SJF算法就是优先级调度</li>
+<li>优先级可由系统动态确定，例如：有些进程为I/O密集型，其多数时间在等待I/O操作，当这样的进程需要CPU时，应尽快地给它CPU，已便它能很快地执行完CPU操作然后去等待I/O操作，下一个进程就可以同时进入CPU。如何实现这样的效果呢？一个简单算法：其优先级设为1/f，f为该进程在上一个时间片所占的部分。</li>
+<li><strong>进程饥饿（Starvation）</strong>：优先级较低的进程可能永远得不到CPU</li>
+<li>解决：Aging思想，优先级要考虑就绪进程在就绪队列里的等待时间，因此，若一个进程在就绪队列中等待，那它的优先级会单调递增</li>
+</ul>
+<p><strong>多级反馈队列（Multilevel Feedback Queue）</strong></p>
+<ul>
+<li>基于多级队列，但另外考虑了进程在就绪队列之间可以迁移</li>
+<li>定义这样的算法应该着重考虑：<ul>
+<li>队列个数</li>
+<li>每级队列的调度算法</li>
+<li>如何将就绪进程升级至高层次队列</li>
+<li>如何将就绪进程降低至低层次队列</li>
+<li>当一个就绪进程进入就绪队列时，应该去哪一级？</li>
+</ul>
+</li>
+</ul>
+<p><strong>最短作业优先法（shortest job first）</strong></p>
+<ul>
+<li>前提：预知进入就绪队列的进程执行时间</li>
+<li>原理：假设有4个进程，其运行时间分别为a，b，c，d，第一个进程在a时刻结束，第二个进程在a+b时刻结束，以此类推，平均周转时间为（4a+3b+2c+d）/4，可以看到a对平均值的影响最大，所以a应该取最小值才好，这样平均周转时间才能取到最小值</li>
+<li>抢占式SJF算法：当一个进程进入就绪队列，如果它的CPU时间小于当前拥有CPU的进程的剩余“预估”时间，前者抢占后者的CPU，称为 Shortest-Remaining-Time-First(SRTF)，不能实现</li>
+<li>SJF算法是最优的算法</li>
+<li>SJF有致命缺陷，如何预估进入就绪队列的进程的执行时间？<ul>
+<li>不可能准确地预测，比如需要用户输入，这是不可知的</li>
+<li>只能根据过去的CPU burst cycle来预测</li>
+</ul>
+</li>
+<li>HRN（Highest response Ratio Next）<ul>
+<li>HRN = （W + T）/ T</li>
+<li>W为等待时间，T代表预估CPU时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程切换步骤"><a href="#线程切换步骤" class="headerlink" title="线程切换步骤"></a>线程切换步骤</h2><p> 先把前一个任务的 CPU 上下文（也就是 CPU 寄存器和程序计数器）保存起来，然后加载新任务的上下文到这些寄存器和程序计数器，最后再跳转到程序计数器所指的新位置，运行新任务。 </p>
+<h2 id="进程通讯（-IPC-）"><a href="#进程通讯（-IPC-）" class="headerlink" title="进程通讯（ IPC ）"></a>进程通讯（ IPC ）</h2><ul>
+<li><p>管道（Pipe）及有名管道（named pipe）：管道可用于具有亲缘关系进程间的通信，有名管道克服了管道没有名字的限制，因此，除具有管道所具有的功能外，它还允许无亲缘关系进程间的通信；</p>
+</li>
+<li><p>报文（MessageQueue）队列（消息队列）：消息队列是消息的链接表，包括Posix消息队列system V消息队列。有足够权限的进程可以向队列中添加消息，被赋予读权限的进程则可以读走队列中的消息。消息队列克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。</p>
+</li>
+<li><p>共享内存：使得多个进程可以访问同一块内存空间，是最快的可用IPC形式。是针对其他通信机制运行效率较低而设计的。往往与其它通信机制，如信号量结合使用，来达到进程间的同步及互斥。</p>
+</li>
+<li><p>套接口（UnixSocket）：更为一般的进程间通信机制，可用于不同机器之间的进程间通信。起初是由Unix系统的BSD分支开发出来的，但现在一般可以移植到其它类Unix系统上：Linux和System V的变种都支持套接字。</p>
+</li>
+<li><p>信号（Signal）：信号是比较复杂的通信方式，用于通知接受进程有某种事件发生，除了用于进程间通信外，进程还可以发送信号给进程本身；linux除了支持Unix早期信号语义函数sigal外，还支持语义符合Posix.1标准的信号函数sigaction（实际上，该函数是基于BSD的，BSD为了实现可靠信号机制，又能够统一对外接口，用sigaction函数重新实现了signal函数）；</p>
+</li>
+<li><p>信号量（semaphore）：主要作为进程间以及同一进程不同线程之间的同步手段。</p>
+</li>
+</ul>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p> 协程更轻量化，是在用户态进行调度，切换的代价比线程上下文切换要低很多 </p>
+<p><strong>JAVA的框架</strong></p>
+<p>Quasar原理</p>
+<p>1、利用字节码增强，将普通的java代码转换为支持协程的代码。<br>2、在调用pausable方法的时候，如果pause了就保存当前方法栈的State，停止执行当前协程，将控制权交给调度器<br>3、调度器负责调度就绪的协程<br>4、协程resume的时候，自动恢复State，根据协程的pc计数跳转到上次执行的位置，继续执行 </p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.jianshu.com/p/91c8600cb2ae" target="_blank" rel="noopener">操作系统——进程、线程、调度</a></p>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/l-ipc/index.html" target="_blank" rel="noopener">深刻理解Linux进程间通信（IPC）</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/10/25/写递归代码时候出现的一个小问题/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
