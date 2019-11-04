@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>计算机网络部分 | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="计算机网络,">
+  
+
+  <meta name="description" content="前言这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。课程地址 前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。 思维导图 4/7层网络模型 TCP协议三次握手 首先建立链接前需要 Server 端先监听端口，因此 Ser">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络部分">
+<meta property="og:url" content="http://yoursite.com/2019/11/04/计算机网络部分/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="前言这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。课程地址 前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。 思维导图 4/7层网络模型 TCP协议三次握手 首先建立链接前需要 Server 端先监听端口，因此 Ser">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Cnet.png">
+<meta property="og:image" content="http://yoursite.com/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Cseven.png">
+<meta property="og:image" content="http://yoursite.com/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5CTCP.png">
+<meta property="og:image" content="http://yoursite.com/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5CTCP4.png">
+<meta property="og:image" content="http://yoursite.com/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Czhuangtai.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/11/04/计算机网络部分/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Chttps.jpg">
+<meta property="og:updated_time" content="2019-11-04T13:19:29.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络部分">
+<meta name="twitter:description" content="前言这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。课程地址 前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。 思维导图 4/7层网络模型 TCP协议三次握手 首先建立链接前需要 Server 端先监听端口，因此 Ser">
+<meta name="twitter:image" content="http://yoursite.com/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Cnet.png">
+
+  
+
+  
+    <link rel="icon" href="favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6847768532676288",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思维导图"><span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-7层网络模型"><span class="toc-text">4/7层网络模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议"><span class="toc-text">TCP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#三次握手"><span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四次挥手"><span class="toc-text">四次挥手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nagel算法和ACK延迟"><span class="toc-text">Nagel算法和ACK延迟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KEEPALIVE"><span class="toc-text">KEEPALIVE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滑动窗口和流量控制"><span class="toc-text">滑动窗口和流量控制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDP协议"><span class="toc-text">UDP协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#协议"><span class="toc-text">协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Method"><span class="toc-text">Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Header"><span class="toc-text">Header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URlEncode"><span class="toc-text">URlEncode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态码"><span class="toc-text">状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1XX-信息"><span class="toc-text">1XX 信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2XX-成功"><span class="toc-text">2XX 成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3XX-重定向"><span class="toc-text">3XX 重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4XX-客户端错误"><span class="toc-text">4XX 客户端错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5XX-服务器错误"><span class="toc-text">5XX 服务器错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS"><span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP2"><span class="toc-text">HTTP2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#QUIC"><span class="toc-text">QUIC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-计算机网络部分" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">计算机网络部分</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.04</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/面试总结/">面试总结</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这个总结是根据拉勾网上面购买的课程进行自行梳理和总结。<a href="https://kaiwu.lagou.com/course/courseInfo.htm?courseId=1#/detail/pc?id=3" target="_blank" rel="noopener">课程地址</a></p>
+<p>前段时间面试了几家公司，虽然都是考察的基础和项目，但是面试结果不是特别的理想，还是知识的掌握程度不够牢固，好多问题都是看过，但是当被问到时候，有的是立刻想出来，有的是没有说的太深。所以打算购买一个课程，重新总结和梳理一遍。</p>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Cnet.png" alt="思维导图"></p>
+<h1 id="4-7层网络模型"><a href="#4-7层网络模型" class="headerlink" title="4/7层网络模型"></a>4/7层网络模型</h1><p><img src="/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Cseven.png" alt="模型"></p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5CTCP.png" alt="模型"></p>
+<p>首先建立链接前需要 Server 端先监听端口，因此 Server 端建立链接前的初始状态就是 LISTEN 状态，这时 Client 端准备建立链接，先发送一个 SYN 同步包，发送完同步包后，Client 端的链接状态变成了 SYN_SENT 状态。Server 端收到 SYN 后，同意建立链接，会向 Client 端回复一个 ACK。</p>
+<p>由于 TCP 是双工传输，Server 端也会同时向 Client 端发送一个 SYN，申请 Server 向 Client 方向建立链接。发送完 ACK 和 SYN 后，Server 端的链接状态就变成了 SYN_RCVD。</p>
+<p>Client 收到 Server 的 ACK 后，Client 端的链接状态就变成了 ESTABLISHED 状态，同时，Client 向 Server 端发送 ACK，回复 Server 端的 SYN 请求。</p>
+<p>Server 端收到 Client 端的 ACK 后，Server 端的链接状态也就变成了的 ESTABLISHED 状态，此时建连完成，双方随时可以进行数据传输。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p><img src="/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5CTCP4.png" alt="模型"></p>
+<p>TCP 链接的关闭，通信双方都可以先发起，我们暂且把先发起的一方看作 Client，从图中看出，通信中 Client 和 Server 两端的链接都是 ESTABLISHED 状态，然后 Client 先主动发起了关闭链接请求，Client 向 Server 发送了一个 FIN 包，表示 Client 端已经没有数据要发送了，然后 Client 进入了 FIN_WAIT_1 状态。</p>
+<p>Server 端收到 FIN 后，返回 ACK，然后进入 CLOSE_WAIT 状态。此时 Server 属于半关闭状态，因为此时 Client 向 Server 方向已经不会发送数据了，可是 Server 向 Client 端可能还有数据要发送。 </p>
+<p>当 Server 端数据发送完毕后，Server 端会向 Client 端发送 FIN，表示 Server 端也没有数据要发送了，此时 Server 进入 LAST_ACK 状态，就等待 Client 的应答就可以关闭链接了。</p>
+<p>Client 端收到 Server 端的 FIN 后，回复 ACK，然后进入 TIME_WAIT 状态。TIME_WAIT 状态下需要等待 2 倍的最大报文段生存时间，来保证链接的可靠关闭，之后才会进入 CLOSED 关闭状态。而 Server 端收到 ACK 后直接就进入 CLOSED 状态。</p>
+<h2 id="Nagel算法和ACK延迟"><a href="#Nagel算法和ACK延迟" class="headerlink" title="Nagel算法和ACK延迟"></a>Nagel算法和ACK延迟</h2><ol>
+<li>Nagle算法：</li>
+</ol>
+<p>是为了减少广域网的小分组数目，从而减小网络拥塞的出现；</p>
+<p>该算法要求一个tcp连接上最多只能有一个未被确认的未完成的小分组，在该分组ack到达之前不能发送其他的小分组，tcp需要收集这些少量的分组，并在ack到来时以一个分组的方式发送出去；其中小分组的定义是小于MSS的任何分组；</p>
+<p>该算法的优越之处在于它是自适应的，确认到达的越快，数据也就发哦送的越快；而在希望减少微小分组数目的低速广域网上，则会发送更少的分组；</p>
+<ol start="2">
+<li>延迟ACK：</li>
+</ol>
+<p>如果tcp对每个数据包都发送一个ack确认，那么只是一个单独的数据包为了发送一个ack代价比较高，所以tcp会延迟一段时间，如果这段时间内有数据发送到对端，则捎带发送ack，如果在延迟ack定时器触发时候，发现ack尚未发送，则立即单独发送；</p>
+<p>延迟ACK好处：</p>
+<p>(1) 避免糊涂窗口综合症；</p>
+<p>(2) 发送数据的时候将ack捎带发送，不必单独发送ack；</p>
+<p>(3) 如果延迟时间内有多个数据段到达，那么允许协议栈发送一个ack确认多个报文段；</p>
+<ol start="3">
+<li>当Nagle遇上延迟ACK：</li>
+</ol>
+<p>试想如下典型操作，写-写-读，即通过多个写小片数据向对端发送单个逻辑的操作，两次写数据长度小于MSS，当第一次写数据到达对端后，对端延迟ack，不发送ack，而本端因为要发送的数据长度小于MSS，所以nagle算法起作用，数据并不会立即发送，而是等待对端发送的第一次数据确认ack；这样的情况下，需要等待对端超时发送ack，然后本段才能发送第二次写的数据，从而造成延迟；</p>
+<ol start="4">
+<li>关闭Nagle算法：</li>
+</ol>
+<p>使用TCP套接字选项TCP_NODELAY可以关闭套接字选项;</p>
+<p>如下场景考虑关闭Nagle算法：</p>
+<p>(1) 对端不向本端发送数据，并且对延时比较敏感的操作；这种操作没法捎带ack；</p>
+<p>(2) 如上写-写-读操作；对于此种情况，优先使用其他方式，而不是关闭Nagle算法：</p>
+<p>–使用writev，而不是两次调用write，单个writev调用会使tcp输出一次而不是两次，只产生一个tcp分节，这是首选方法；</p>
+<p>–把两次写操作的数据复制到单个缓冲区，然后对缓冲区调用一次write；</p>
+<p>–关闭Nagle算法，调用write两次；有损于网络，通常不考虑；</p>
+<h2 id="KEEPALIVE"><a href="#KEEPALIVE" class="headerlink" title="KEEPALIVE"></a>KEEPALIVE</h2><ol>
+<li>KeepAlive默认情况下是关闭的，可以被上层应用开启和关闭</li>
+<li><strong>tcp_keepalive_time</strong>: KeepAlive的空闲时长，或者说每次正常发送心跳的周期，默认值为7200s（2小时）</li>
+<li><strong>tcp_keepalive_intvl</strong>: KeepAlive探测包的发送间隔，默认值为75s</li>
+<li><strong>tcp_keepalive_probes</strong>: 在tcp_keepalive_time之后，没有接收到对方确认，继续发送保活探测包次数，默认值为9（次）</li>
+</ol>
+<h2 id="滑动窗口和流量控制"><a href="#滑动窗口和流量控制" class="headerlink" title="滑动窗口和流量控制"></a>滑动窗口和流量控制</h2><p> 滑动窗口协议是<strong>传输层进行流控</strong>的一种措施，<strong>接收方通过通告发送方自己的窗口大小</strong>，从而控制发送方的发送速度，从而达到防止发送方发送速度过快而导致自己被淹没的目的。 <a href="https://www.zhihu.com/question/32255109" target="_blank" rel="noopener">TCP协议的滑动窗口具体是怎样控制流量的？</a></p>
+<h1 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h1><ol>
+<li><p>udp是无连接的</p>
+</li>
+<li><p>UDP使用尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的连接状态。</p>
+</li>
+<li><p>UDP没有拥塞控制，因此网络出现拥塞不会是源主机的发送速率降低。</p>
+</li>
+<li><p>UDP支持一对一，一对多，多对一和多对多的相互通信；</p>
+</li>
+<li><p>UDP的首部开销小，只有8个字节，比TCP的20个字节要短。</p>
+</li>
+</ol>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
+<li>get： 获取资源，当前网络中大部分是get</li>
+<li>post： 传输实体主体</li>
+<li>head:  获取报文首部</li>
+<li>put: 上传文件资源，自身不代验证机制，存在安全问题，不经常使用</li>
+<li>patch: 对资源进行部分修改</li>
+<li>options： 查询指定url支持的方法</li>
+<li>connect： 要求和指定url建立通道，使用ssl和tls协议把通信内容加密以后，经网络传输。</li>
+<li>trace： 追踪路径。服务器将通信路径返回给客户端。环回测试。</li>
+</ul>
+<h3 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h3><p>有四种类型的首部字段：通用首部字段、请求首部字段、响应首部字段和实体首部字段。</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>​        Cookie实际上是一小段的文字薪资。客户端请求服务器，如果服务器需要记录用户状态，就使用response向客户端浏览器颁发一个Cookie,而客户端浏览器会把Cookie储存起来。当浏览器在请求该网站的时候，浏览器就把请求的网址连同Cookie异同提交给服务器，服务器检查该Cookie，以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容。</p>
+<h3 id="URlEncode"><a href="#URlEncode" class="headerlink" title="URlEncode"></a>URlEncode</h3><p>urlencode是一个函数，可将字符串以URL编码，用于编码处理。</p>
+<p>URL编码(URL encoding)，也称作百分号编码(Percent-encoding)， 是特定上下文的统一资源定位符 (URL)的编码机制。</p>
+<p>适用于统一资源标识符(URI)的编码，也用于为”application/x-www-form-urlencoded” MIME准备数据， 因为它用于通过HTTP的请求操作(request)提交HTML表单数据。</p>
+<p>原理：</p>
+<p>将需要转码的字符转为16进制，然后从右到左，取4位(不足4位直接处理)，每2位做一位，前面加上%，编码成%XY格式。</p>
+<p>比如：</p>
+<p>空格<a href="https://baike.baidu.com/item/ASCII" target="_blank" rel="noopener">ASCII</a>码是32，对应16进制是20，那么urlencode编码结果是:%20,但在新标准中空格对应的是+,见RFC-1738</p>
+<p>比如：</p>
+<p>中ASCII码是-10544，对应的16进制是D6D0，那么urlencode编码结果是:%D6%D0</p>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p><img src="/.com//%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Czhuangtai.jpg" alt="状态码"></p>
+<h3 id="1XX-信息"><a href="#1XX-信息" class="headerlink" title="1XX 信息"></a>1XX 信息</h3><p>100 Continue ：表明到目前为止都很正常，客户端可以继续发送请求或者忽略这个响应。 </p>
+<h3 id="2XX-成功"><a href="#2XX-成功" class="headerlink" title="2XX 成功"></a>2XX 成功</h3><p>1、 200 OK</p>
+<p>2、204 No Content ：请求已经成功处理，但是返回的响应报文不包含实体的主体部分。 一般在只需要从客户端往服务器发送信息，而不需要返回数据时使用。</p>
+<p>3、206 Partial Content ：表示客户端进行了范围请求，响应报文包含由 Content-Range 指定范围的实体内容。</p>
+<h3 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a>3XX 重定向</h3><p>1、301 Moved Permanently ：永久性重定向； 2、302 Found ：临时性重定向；</p>
+<p>3、303 See Other ：和 302 有着相同的功能，但是 303 明确要求客户端应该采用 GET 方法获取资源。</p>
+<p>注：虽然 HTTP 协议规定 301、302 状态下重定向时不允许把 POST 方法改成 GET 方 法，但是大多数浏览器都会在 301、302 和 303 状态下的重定向把 POST 方法改成 GET 方法。</p>
+<p>4、304 Not Modified ：如果请求报文首部包含一些条件，例如：If-Match，If- Modified-Since，If-None-Match，If-Range，If-Unmodified-Since，如果不满足条 件，则服务器会返回 304 状态码。</p>
+<p>5、307 Temporary Redirect ：临时重定向，与 302 的含义类似，但是 307 要求浏览器 不会把重定向请求的 POST 方法改成 GET 方法。</p>
+<h3 id="4XX-客户端错误"><a href="#4XX-客户端错误" class="headerlink" title="4XX 客户端错误"></a>4XX 客户端错误</h3><p>1、400 Bad Request ：请求报文中存在语法错误。</p>
+<p>2、401 Unauthorized ：该状态码表示发送的请求需要有认证信息（BASIC 认证、</p>
+<p>DIGEST 认证）。如果之前已进行过一次请求，则表示用户认证失败。</p>
+<p>3、403 Forbidden ：请求被拒绝。</p>
+<p> 4、404 Not Found</p>
+<h3 id="5XX-服务器错误"><a href="#5XX-服务器错误" class="headerlink" title="5XX 服务器错误"></a>5XX 服务器错误</h3><p>1、500 Internal Server Error ：服务器正在执行请求时发生错误；</p>
+<p>2、503 Service Unavailable ：服务器暂时处于超负载或正在进行停机维护，现在无法处 理请求。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>HTTPS：Hypertext Transfer Protocol Secure 超文本传输安全协议 TLS：<strong>位于 HTTP 和 TCP 之间的协议</strong>，其内部有 TLS 握手协议、TLS 记录协议</p>
+<p>HTTPS 经由进行通信，但利用来保证安全，即</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%5Chttps.jpg" alt="HTTPS"></p>
+<p>1、客户端发送自己支持的加密规则给服务器，代表告诉服务器要进行连接了；</p>
+<p>2、服务器从中选出一套加密算法和 hash 算法以及自己的身份信息（地址等）以证书的形 式发送给浏览器，证书中包含服务器信息，加密公钥，证书的办法机构；</p>
+<p>3、客户端收到网站的证书之后要做下面的事情：</p>
+<p>（1）验证证书的合法性；</p>
+<p>（2）如果验证通过证书，浏览器会生成一串随机数，并用证书中的公钥进行加密；</p>
+<p>（3）用约定好的 hash 算法计算握手消息，然后用生成的密钥进行加密，然后一起发送给 服务器。</p>
+<p>4、服务器接收到客户端传送来的信息，要做下面的事情：</p>
+<p>（1）用私钥解析出密码，用密码解析握手消息，验证 hash 值是否和浏览器发来的一致；</p>
+<p>（2）使用密钥加密消息；</p>
+<p>5、如果计算法 hash 值一致，握手成功。 https 要知道的几个加密算法：</p>
+<p>握手的时候使用的非对称加密算法：用来加密握手之后的请求和应答；</p>
+<p>传输信息的时候使用的对称加密； 保证数据的完整性用的是 hash 算法（数字签名）</p>
+<h2 id="HTTP2"><a href="#HTTP2" class="headerlink" title="HTTP2"></a>HTTP2</h2><p>1、<strong>http2.0</strong> <strong>支持多路复用</strong>，同一个连接可以并发处理多个请求，方法是把 http 数据 包拆为多个帧，并发有序的发送，根据序号在另一端进行重组，而不需要一个个 http 请求顺序到达；</p>
+<p>2、<strong>http2.0 支持服务端推送</strong>，就是服务端在 http 请求到达后，除了返回数据之外， 还推送了额外的内容给客户端；</p>
+<p>3、<strong>http2.0 压缩了请求头</strong>，同时基本单位是二进制帧流，这样的数据占用空间更 少；</p>
+<p>4、<strong>http2.0 适用于 https 场景</strong>，因为其在 http 和 tcp 中间加了一层 ssl 层。</p>
+<h1 id="QUIC"><a href="#QUIC" class="headerlink" title="QUIC"></a>QUIC</h1><p><a href="https://zhuanlan.zhihu.com/p/32553477" target="_blank" rel="noopener">科普：QUIC协议原理分析</a></p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>[<a href="https://www.cnblogs.com/wanpengcoder/p/5366156.html" target="_blank" rel="noopener">TCP之Nagle算法&amp;&amp;延迟ACK</a>]</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/01/操作系统部分/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
