@@ -7,26 +7,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>IP地址和String类型的转换 | 喜欢二福的沧月君的小站</title>
+  <title>遇到ajax传多值和传一个值的bug ; hexo n 遇到ajax传多值和传一个值的bug | 喜欢二福的沧月君的小站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="算法,">
+    <meta name="keywords" content="necydcy,喜欢二福的沧月君,石家庄铁道大学，高得健">
   
 
-  <meta name="description" content="昨天面试让手写的一个算法。其实我的算法技术是真的不太行。 我的思路：  按照ip地址，先把ip地址转换成二进制的字符串，然后，每8位截取。生成字符。  面试官说int是四个字节，ip地址是点分十进制。然后每个字节储存的是一位数字。（可以理解，当时真的没有想到位运算这一说。），回头再网上找了一下，果然可以。可是我位运算真的不会。  首先字符串转换成ip地址。按照“.”切分字符串，然后把每个字符串，并">
-<meta name="keywords" content="算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="IP地址和String类型的转换">
-<meta property="og:url" content="http://yoursite.com/2019/11/12/IP地址和String类型的转换/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="遇到ajax传多值和传一个值的bug ; hexo n 遇到ajax传多值和传一个值的bug">
+<meta property="og:url" content="http://yoursite.com/2019/12/23/遇到ajax传多值和传一个值的bug-hexo-n-遇到ajax传多值和传一个值的bug/index.html">
 <meta property="og:site_name" content="喜欢二福的沧月君的小站">
-<meta property="og:description" content="昨天面试让手写的一个算法。其实我的算法技术是真的不太行。 我的思路：  按照ip地址，先把ip地址转换成二进制的字符串，然后，每8位截取。生成字符。  面试官说int是四个字节，ip地址是点分十进制。然后每个字节储存的是一位数字。（可以理解，当时真的没有想到位运算这一说。），回头再网上找了一下，果然可以。可是我位运算真的不会。  首先字符串转换成ip地址。按照“.”切分字符串，然后把每个字符串，并">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-15T05:19:06.797Z">
+<meta property="og:updated_time" content="2019-12-23T10:10:16.942Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IP地址和String类型的转换">
-<meta name="twitter:description" content="昨天面试让手写的一个算法。其实我的算法技术是真的不太行。 我的思路：  按照ip地址，先把ip地址转换成二进制的字符串，然后，每8位截取。生成字符。  面试官说int是四个字节，ip地址是点分十进制。然后每个字节储存的是一位数字。（可以理解，当时真的没有想到位运算这一说。），回头再网上找了一下，果然可以。可是我位运算真的不会。  首先字符串转换成ip地址。按照“.”切分字符串，然后把每个字符串，并">
+<meta name="twitter:title" content="遇到ajax传多值和传一个值的bug ; hexo n 遇到ajax传多值和传一个值的bug">
 
   
 
@@ -121,14 +117,14 @@
 
 
 <div class="content content-post CENTER">
-   <article id="post-IP地址和String类型的转换" class="article article-type-post" itemprop="blogPost">
+   <article id="post-遇到ajax传多值和传一个值的bug-hexo-n-遇到ajax传多值和传一个值的bug" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">IP地址和String类型的转换</h1>
+    <h1 class="post-title">遇到ajax传多值和传一个值的bug ; hexo n 遇到ajax传多值和传一个值的bug</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2019.11.12</span>
+        <span>2019.12.23</span>
       </span>
 
       
@@ -139,11 +135,6 @@
       
 
       
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/面试总结/">面试总结</a>
-  </span>
-
 
 
       
@@ -161,26 +152,7 @@
 
   <div class="article-content">
     
-      <p>昨天面试让手写的一个算法。其实我的算法技术是真的不太行。</p>
-<p>我的思路：</p>
-<blockquote>
-<p>按照ip地址，先把ip地址转换成二进制的字符串，然后，每8位截取。生成字符。</p>
-</blockquote>
-<p>面试官说int是四个字节，ip地址是点分十进制。然后每个字节储存的是一位数字。（可以理解，当时真的没有想到位运算这一说。），回头再网上找了一下，果然可以。可是我位运算真的不会。</p>
-<blockquote>
-<p>首先字符串转换成ip地址。按照“.”切分字符串，然后把每个字符串，并按照位置左移八位，然后进行或运算，返回字符</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int str2Ip(String ip)&#123;</span><br><span class="line">	String[] ipstrs = ip.split(\\.);//按照.分割字符存入数组</span><br><span class="line">	int rs = 0;//保存结果</span><br><span class="line">	for(int i = 0;i &lt; ipstrs.length; i++)&#123;</span><br><span class="line">		int intVal = Integer.parseInt(ipstrs[i]) &lt;&lt; 8 * i;//对应位数转换成对应的数组</span><br><span class="line">		rs = rs | intval;//进行与运算，把每次新加进来的保存在头部。</span><br><span class="line">	&#125;</span><br><span class="line">	return rs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>ip地址转换成字符串，每8位进行一次切割，然后存储。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static String IptoString(int ipInt)&#123;</span><br><span class="line">	String[] ipString = new String[4];</span><br><span class="line">	for(int i = 0; i &lt; 4; i++)&#123;</span><br><span class="line">		int pos = i * 8;</span><br><span class="line">		int and = ipInt &amp; (255 &lt;&lt; pos);</span><br><span class="line">		ipString[i] = String.valueOf(and &gt;&gt;&gt; pos);</span><br><span class="line">	&#125;</span><br><span class="line">	return String.join(&quot;.&quot; , ipString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>昨天又跑了一天，面试机会也越来越少了。真没有办法，上面的也是真的不会。</p>
-<p>可能算法真的太长时间没有练了。总感觉很生疏。马虎大意可能也写错了。</p>
-<p>面试结果自我感觉不是太好。</p>
-
+      
     
   </div>
 
@@ -217,10 +189,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/11/07/“记一次面试/">
+    <a class="show pull-left" href="/2019/12/19/二福哥哥的秋招总结(未完待续)/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/12/19/二福哥哥的秋招总结(未完待续)/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
