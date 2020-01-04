@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>ubuntu下搭建区块链 （Hyperledger Fabric) | 喜欢二福的沧月君的小站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="区块链,">
+  
+
+  <meta name="description" content="博主环境：华为云Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-165-generic x86_64) *使用root用户登录 *  1、安装Golang环境1.1下载golang 下载 1wget https://studygolang.com/dl/golang/go1.9.linux-amd64.tar.gz  安装 1tar -C /usr/local -xzf">
+<meta name="keywords" content="区块链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu下搭建区块链 （Hyperledger Fabric)">
+<meta property="og:url" content="http://yoursite.com/2020/01/04/ubuntu下搭建区块链-（Hyperledger-Fabric/index.html">
+<meta property="og:site_name" content="喜欢二福的沧月君的小站">
+<meta property="og:description" content="博主环境：华为云Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-165-generic x86_64) *使用root用户登录 *  1、安装Golang环境1.1下载golang 下载 1wget https://studygolang.com/dl/golang/go1.9.linux-amd64.tar.gz  安装 1tar -C /usr/local -xzf">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-04T12:25:23.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu下搭建区块链 （Hyperledger Fabric)">
+<meta name="twitter:description" content="博主环境：华为云Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-165-generic x86_64) *使用root用户登录 *  1、安装Golang环境1.1下载golang 下载 1wget https://studygolang.com/dl/golang/go1.9.linux-amd64.tar.gz  安装 1tar -C /usr/local -xzf">
+
+  
+
+  
+    <link rel="icon" href="favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6847768532676288",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、安装Golang环境"><span class="toc-text">1、安装Golang环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1下载golang"><span class="toc-text">1.1下载golang</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2配置go的环境变量"><span class="toc-text">1.2配置go的环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、下载docker"><span class="toc-text">2、下载docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1安装docker"><span class="toc-text">2.1安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Docker-Compose的安装"><span class="toc-text">2.2 Docker-Compose的安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、Fabric源码下载"><span class="toc-text">3、Fabric源码下载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-github上clone-下载源代码"><span class="toc-text">3.1 github上clone 下载源代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Fabric-Docker镜像的下载"><span class="toc-text">3.2 Fabric Docker镜像的下载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、编译cryptogen"><span class="toc-text">4、编译cryptogen</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-、修改文件运行区块链"><span class="toc-text">5 、修改文件运行区块链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#到此，fabric-环境的搭建和演示就结束了。"><span class="toc-text">到此，fabric 环境的搭建和演示就结束了。</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ubuntu下搭建区块链-（Hyperledger-Fabric" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">ubuntu下搭建区块链 （Hyperledger Fabric)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.01.04</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>高得健</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/教程/">教程</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>博主环境：华为云Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-165-generic x86_64)</p>
+<p>*<em>使用root用户登录 *</em></p>
+</blockquote>
+<h1 id="1、安装Golang环境"><a href="#1、安装Golang环境" class="headerlink" title="1、安装Golang环境"></a>1、安装Golang环境</h1><h2 id="1-1下载golang"><a href="#1-1下载golang" class="headerlink" title="1.1下载golang"></a>1.1下载golang</h2><ul>
+<li><p>下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://studygolang.com/dl/golang/go1.9.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -C /usr/local -xzf go1.9.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="1-2配置go的环境变量"><a href="#1-2配置go的环境变量" class="headerlink" title="1.2配置go的环境变量"></a>1.2配置go的环境变量</h2><ul>
+<li><p>打开配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改文件(在下面加入)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GOROOT=/usr/local/go </span><br><span class="line">GOPATH=~/go </span><br><span class="line">PATH=$GOPATH/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果配置过其他的环境，java什么的，PATH加到后面就行</p>
+<p>PATH=$JAVA_HOME/bin:$ZK_HOME/bin:$GOPATH/bin:$PATH</p>
+</blockquote>
+</li>
+<li><p>保存退出（esc，输入:wq）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建 go的目录GOPATH </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir go</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="2、下载docker"><a href="#2、下载docker" class="headerlink" title="2、下载docker"></a>2、下载docker</h1><h2 id="2-1安装docker"><a href="#2-1安装docker" class="headerlink" title="2.1安装docker"></a>2.1安装docker</h2><ul>
+<li>安装必要的一些系统工具</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> update</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装GPG证书</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL http:<span class="comment">//mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>写入软件源信息</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository <span class="string">"deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新并安装 Docker-CE</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> -y update</span><br><span class="line">apt-<span class="keyword">get</span> -y install docker-ce</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看是否安装完成，显示当前的docker版本</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注销并重新登录，然后添加阿里云的Docker Hub镜像</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>修改文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;registry-mirrors&quot;: [&quot;https://obou6wyb.mirror.aliyuncs.com&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存退出，重启docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="2-2-Docker-Compose的安装"><a href="#2-2-Docker-Compose的安装" class="headerlink" title="2.2 Docker-Compose的安装"></a>2.2 Docker-Compose的安装</h2><ul>
+<li>要安装Python-pip：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install python-pip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后是安装docker-compose</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https:<span class="comment">//get.daocloud.io/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` &gt; ~/docker-compose</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv ~/docker-compose /usr/local/bin/docker-compose </span><br><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<h1 id="3、Fabric源码下载"><a href="#3、Fabric源码下载" class="headerlink" title="3、Fabric源码下载"></a>3、Fabric源码下载</h1><h2 id="3-1-github上clone-下载源代码"><a href="#3-1-github上clone-下载源代码" class="headerlink" title="3.1 github上clone 下载源代码"></a>3.1 github上clone 下载源代码</h2><ul>
+<li>我们可以使用Git命令下载源码，首先需要建立对应的目录，然后进入该目录，Git下载源码：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~<span class="regexp">/go/</span>src/github.com/hyperledger </span><br><span class="line">cd ~<span class="regexp">/go/</span>src/github.com/hyperledger </span><br><span class="line">git clone https:<span class="comment">//github.com/hyperledger/fabric.git</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Fabric 切换到指定版本v1.0.0(这个喜欢用哪个版本都可以，我看网上1.0.0多一点，就用了这个)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~<span class="regexp">/go/</span>src/github.com/hyperledger/fabric</span><br><span class="line">git checkout v1<span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-Fabric-Docker镜像的下载"><a href="#3-2-Fabric-Docker镜像的下载" class="headerlink" title="3.2 Fabric Docker镜像的下载"></a>3.2 Fabric Docker镜像的下载</h2><ul>
+<li>下载</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~<span class="regexp">/go/</span>src/github.com/hyperledger/fabric/examples/e2e_cli/</span><br><span class="line">source download-dockerimages.sh -c x86_64<span class="number">-1.0</span><span class="number">.0</span> -f x86_64<span class="number">-1.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>下载完毕后，检查下载的镜像列表：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">执行命令：docker images</span><br></pre></td></tr></table></figure>
+
+<h1 id="4、编译cryptogen"><a href="#4、编译cryptogen" class="headerlink" title="4、编译cryptogen"></a>4、编译cryptogen</h1><ul>
+<li>编译生成 cryptogen之前我们需要安装一个软件包，否则编译时会报错</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install libtool libltdl3-dev</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Fabric提供了专门编译cryptogen的入口，我们只需要运行以下命令即可：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~<span class="regexp">/go/</span>src/github.com/hyperledger/fabric</span><br><span class="line">make cryptogen</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行后系统返回如下结果即代表编译成功了</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build/bin/cryptogen </span><br><span class="line">CGO_CFLAGS=<span class="string">" "</span> GOBIN=<span class="regexp">/home/</span>studyzy/go/src/github.com/hyperledger/fabric/build/bin go install -tags <span class="string">""</span> -ldflags <span class="string">"-X github.com/hyperledger/fabric/common/tools/cryptogen/metadata.Version=1.0.0"</span> github.com/hyperledger/fabric/common/tools/cryptogen </span><br><span class="line">Binary available <span class="keyword">as</span> build/bin/cryptogen</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-、修改文件运行区块链"><a href="#5-、修改文件运行区块链" class="headerlink" title="5 、修改文件运行区块链"></a>5 、修改文件运行区块链</h1><ul>
+<li>切换路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/go/src/github.com/hyperledger/fabric/examples/e2e_cli</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 /etc/resolv.conf 配置，将 options <strong><strong>**</strong></strong> 内容注释掉，作者修改后的内容如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)</span><br><span class="line">#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span><br><span class="line">127.0.0.1</span><br><span class="line"># options timeout:2 attempts:3 rotate single-request-reopen</span><br></pre></td></tr></table></figure>
+
+<p>执行启动命令，它会启动一个 mychannel 的channel </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./network_setup.sh up mychannel</span><br></pre></td></tr></table></figure>
+
+<p>进入到docker 的shell 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it cli bash</span><br></pre></td></tr></table></figure>
+
+<p>查看a 用户有多少余额</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果要转帐20 元给b，执行以下命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o orderer.example.com:7050  --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem  -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;invoke&quot;,&quot;a&quot;,&quot;b&quot;,&quot;20&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再来查看a的余额，就变为70元</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭e2e_cli 的demo服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭 myChannel </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./network_setup.sh down myChannel</span><br></pre></td></tr></table></figure>
+
+<h1 id="到此，fabric-环境的搭建和演示就结束了。"><a href="#到此，fabric-环境的搭建和演示就结束了。" class="headerlink" title="到此，fabric 环境的搭建和演示就结束了。"></a>到此，fabric 环境的搭建和演示就结束了。</h1>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下，爱你。</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/12/31/区块链基础知识/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '10a2e25430559a23fd8d',
+  clientSecret: '2942f7ecc68e89879ff1164afc1d4e79b83005f0',
+  repo: 'cy486.github.io',
+  owner: 'cy486',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  id: location.pathname.split('/').pop().substring(0, 49),
+  admin: ['cy486'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
